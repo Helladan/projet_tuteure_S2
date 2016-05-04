@@ -1,4 +1,4 @@
-package Model;
+package Control;
 
 public class ControlGroup
 {

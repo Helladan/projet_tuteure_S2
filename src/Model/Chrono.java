@@ -1,4 +1,4 @@
-package Control;
+package Model;
 
 public class Chrono
 {
