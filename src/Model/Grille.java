@@ -22,7 +22,6 @@ public class Grille
 	public Grille(){
 		this(HAUTEUR_PAR_DEFAUT,LARGEUR_PAR_DEFAUT,NBRE_DE_MINES_PAR_DEFAUT);
 	}
-
 	/**
 	 * Crée une nouvelle grille aux dimensions
 	 * transmises en parametre.
@@ -42,6 +41,32 @@ public class Grille
 	}
 
 	/**
+	 * Renvoie la hauteur de la grille.
+	 * @return Hauteur de la grille (int) en nombre de cases.
+	 * @author Tarek
+     */
+	public int getHauteur(){
+		return hauteur;
+	}
+
+	/**
+	 * Renvoie la largeur de la grille.
+	 * @return Largeur de la grille (int) en nombre de cases.
+	 * @author Tarek
+     */
+	public int getLargeur(){
+		return largeur;
+	}
+
+	/**
+	 * Renvoie le nombre de mines dans la grille.
+	 * @return Le nombre de mines présents dans la grille (int).
+	 * @author Tarek
+     */
+	public int getNombreDeMines(){
+		return nombreDeMines;
+	}
+	/**
 	 * Génère une nouvelle grille.
 	 * @author Tarek
      */
@@ -50,7 +75,7 @@ public class Grille
 		grille = new Case[hauteur][largeur];
 		for(i=0;i<hauteur;i++){
 			for(j=0;j<largeur;j++){
-				grille[i][j] = new Case();
+				grille[i][j] = new Case(i,j);
 			}
 		}
 	}
@@ -81,7 +106,6 @@ public class Grille
 			}
 		}
 	}
-
 	/**
 	 * Indique si la grille est gagnée (toutes les cases sont
 	 * dévoilées sauf les mines).
