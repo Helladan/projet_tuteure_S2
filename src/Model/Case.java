@@ -20,7 +20,8 @@ public class Case
 	 * @param j La position en largeur(x) de la case dans la grille.
 	 * @author Tarek
 	 */
-	public Case(int i, int j){
+	public Case(int i, int j)
+	{
 		devoilee=false;
 		mine=false;
 		drapeau=false;
@@ -34,7 +35,8 @@ public class Case
 	 *         false si elle est cachée.
 	 * @author Tarek
      */
-	public boolean isDevoilee() {
+	public boolean isDevoilee()
+	{
 		return devoilee;
 	}
 	/**
@@ -44,7 +46,8 @@ public class Case
 	 * 		    n'est pas une mine.
 	 * @author Tarek
      */
-	public boolean isMine() {
+	public boolean isMine()
+	{
 		return mine;
 	}
 	/**
@@ -53,7 +56,8 @@ public class Case
 	 * 		   false sinon.
 	 * @author Tarek
      */
-	public boolean isDrapeau() {
+	public boolean isDrapeau()
+	{
 		return drapeau;
 	}
 	/**
@@ -61,7 +65,8 @@ public class Case
 	 * @return Le nombre de cases minées adjacentes à la case (int).
 	 * @author Tarek
      */
-	public int getMinesAdjacentes() {
+	public int getMinesAdjacentes()
+	{
 		return minesAdjacentes;
 	}
 	/**
@@ -69,14 +74,16 @@ public class Case
 	 * @return Un objet Point contenant les coordonnées de la case.
 	 * @author Tarek
      */
-	public Point getCoord() {
+	public Point getCoord()
+	{
 		return coord;
 	}
 	/**
 	 * Marque la case comme dévoilée.
 	 * @author Tarek
      */
-	public void setAsDevoilee() {
+	public void setAsDevoilee()
+	{
 		devoilee = true;
 	}
 	/**
@@ -85,21 +92,24 @@ public class Case
 	 *                   marquée la case comme non drapeau.
 	 * @author Tarek
      */
-	public void setDrapeau(boolean drapeau) {
+	public void setDrapeau(boolean drapeau)
+	{
 		this.drapeau = drapeau;
 	}
 	/**
 	 * Marque la case comme une mine.
 	 * @author Tarek
 	 */
-	public void setAsMine(){
+	public void setAsMine()
+	{
 		mine = true;
 	}
 	/**
 	 * Incremente le nombre de mine adjacentes
 	 * @author Tarek
 	 */
-	public void incrementeMinesAdjacentes(){
+	public void incrementeMinesAdjacentes()
+	{
 		minesAdjacentes++;
 	}
 }
