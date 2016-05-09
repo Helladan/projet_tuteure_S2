@@ -1,5 +1,5 @@
 package Control;
 
-public class ControlMenu extends  Control
+public class ControlMenu extends Control
 {
 }
