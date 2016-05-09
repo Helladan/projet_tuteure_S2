@@ -141,4 +141,13 @@ public class Grille
 	{
 		return casesDevoilees == casesVides;
 	}
+
+	/**
+	 * Incremente le compteur de cases dévoilées.
+	 * @author Tarek
+	 */
+	public void incrementeCasesDevoilees()
+	{
+		casesDevoilees++;
+	}
 }
