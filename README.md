@@ -5,7 +5,7 @@ Lien vers le Google Drive : https://drive.google.com/folderview?id=0B_fHcbW7S8cE
 Projet tuteuré de S2 - IUT-BM -
 Corentin Della Nave, Nassim Boufim, Anthony Godard, Tarek Marce, Van-Minh-Michael Nguyen, Raphaël Ragoomundun
 
-## Répartition des tâches
+### Répartition des tâches
 
 - Raphaël : Chrono
 - Minh : ControlButton
