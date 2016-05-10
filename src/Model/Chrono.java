@@ -20,11 +20,12 @@ public class Chrono {
 	/**
 	 * Première surcharge du constructeur de Chrono
 	 *
-	 * Récupère que le meilleur temps, et prend en
-	 * référence une instance de Grille.
+	 * Récupère le meilleur temps et initialite grille.
 	 * Les autres variables d'instances sont
 	 * initialisées par java.
 	 *
+	 * @param grille Une instance de Grille
+	 * 
 	 * @author : Raphael-R-R
 	 */
 
