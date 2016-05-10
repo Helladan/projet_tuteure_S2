@@ -5,7 +5,9 @@ Lien vers le Google Drive : https://drive.google.com/folderview?id=0B_fHcbW7S8cE
 Projet tuteuré de S2 - IUT-BM -
 Corentin Della Nave, Nassim Boufim, Anthony Godard, Tarek Marce, Van-Minh-Michael Nguyen, Raphaël Ragoomundun
 
-### Répartition des tâches
+## Répartition des tâches
+
+### Classes java
 
 - Raphaël : Chrono
 - Minh : ControlButton
@@ -13,3 +15,7 @@ Corentin Della Nave, Nassim Boufim, Anthony Godard, Tarek Marce, Van-Minh-Michae
 - Anthony : Control, ControlGroup
 - Nassime : Fenetre
 - Tarek : Case, Grille
+
+### Base de donnée
+
+- Anthony
