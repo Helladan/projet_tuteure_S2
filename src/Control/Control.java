@@ -21,7 +21,7 @@ public abstract class Control
 	 * Constructeur de Control
 	 *
 	 * @param case_ Une référence vers une instance de la classe Case
-	 * @param chrono Une référence vers une instance de la classe Chrono
+	 * @param chrono Une référence vers une instance de la 	classe Chrono
 	 * @param controlMenu Une référence vers une instance de la classe ControlMenu
 	 *
 	 * @author Raphael-R-R
