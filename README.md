@@ -10,9 +10,8 @@ Corentin Della Nave, Nassim Boufim, Anthony Godard, Tarek Marce, Van-Minh-Michae
 ### Classes java
 
 - Raphaël : Chrono
-- Minh : ControlButton
-- Corentin : ControlMenu
-- Anthony : Control, ControlGroup
+- Minh : ControlButton, Control
+- Corentin : ControlMenu, ControlGroup
 - Nassime : Fenetre
 - Tarek : Case, Grille
 
