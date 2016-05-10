@@ -1,6 +1,5 @@
 package Model;
 
-public class Chrono
-{
-	float temps, meilleurTemps;
+public class Chrono {
+    float temps, meilleurTemps;
 }
