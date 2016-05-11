@@ -1,5 +1,5 @@
 package View;
 
-public class Fenetre
-{
+public class Fenetre {
+    int i=1;
 }
