@@ -1,6 +1,10 @@
 package Model;
 
-public class Grille {
+/**
+ * Grille de jeu. Tableau 2D de Case
+ * @author Tarek
+ */
+class Grille {
     private final static int LARGEUR_PAR_DEFAUT = 8;
     private final static int HAUTEUR_PAR_DEFAUT = 8;
     private final static int NBRE_DE_MINES_PAR_DEFAUT = 4;
@@ -10,6 +14,7 @@ public class Grille {
     private final int casesVides;
     private Case grille[][];
     private int casesDevoilees;
+    private boolean grillePerdue;
 
     /**
      * Constructeur par défaut de Grille,
@@ -36,6 +41,7 @@ public class Grille {
         this.placeMines();
         casesVides = haut * larg - nbreMines;
         casesDevoilees = 0;
+        grillePerdue = false;
     }
 
     /**
@@ -116,9 +122,32 @@ public class Grille {
     }
 
     /**
+     * Marquer la grille comme perdue.
+     */
+    public void setGrillePerdue(){
+        grillePerdue = true;
+    }
+
+    /**
+     * Indique si la grille est perdue (une mine à été dévoilée).
+     *
+     * @return True si la grille est perdue, false sinon.
+     */
+    public boolean isPerdue(){
+        return grillePerdue;
+    }
+    /**
      * Incremente le compteur de cases dévoilées.
      */
     public void incrementeCasesDevoilees() {
         casesDevoilees++;
+    }
+
+    /**
+     * Renvoie la grille de jeu.
+     * @return Un tableau 2D de Case.
+     */
+    public Case[][] getGrille(){
+        return grille;
     }
 }

@@ -2,7 +2,11 @@ package Model;
 
 import java.awt.*;
 
-public class Case {
+/**
+ * Classe Case, représente les cases du démineur.
+ * @author Tarek
+ */
+class Case {
     private boolean devoilee, mine, drapeau;
     private int minesAdjacentes;
     final private Point coord;
