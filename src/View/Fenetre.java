@@ -13,7 +13,7 @@ public class Fenetre extends JFrame{
      * Déclaration des attributs
      */
 
-    Model m;
+    Grille grid;
     JMenuItem mItemNouvellePartie;
     JMenuItem mItemScores;
     JMenuItem mItemQuitter;
@@ -24,8 +24,8 @@ public class Fenetre extends JFrame{
      * Constructeur de Fenetre
      */
 
-    public Fenetre(Model model){
-        this.m=model;
+    public Fenetre(Grille g){
+        this.g=grid;
 
         initAttribut();
         creerMenu();
@@ -37,8 +37,9 @@ public class Fenetre extends JFrame{
      * Initialisation des attributs
      */
 
-    public void initAttribut(){
+    public void initAttribut(Jeu jeu){
 
+        grille = jeu.getGrille();
         mItemNouvellePartie = new JMenuItem("Nouvelle partie");
         mItemScores = new JMenuItem("Scores");
         mItemQuitter = new JMenuItem("Quitter");
@@ -70,7 +71,10 @@ public class Fenetre extends JFrame{
      */
 
     public void creerGrille(){
+        int h;
+        int l;
 
+        h=grid.getHauteur();
 
 
     }
@@ -85,6 +89,17 @@ public class Fenetre extends JFrame{
         mItemNouvellePartie.addActionListener(al);
         mItemScores.addActionListener(al);
         mItemQuitter.addActionListener(al);
+
+    }
+
+    /**
+     * Ajout d'écouteur sur les JButton
+     * @param al
+     */
+
+    public void setControlBouton(ActionListener al){
+
+
 
     }
 
@@ -115,7 +130,7 @@ public class Fenetre extends JFrame{
      * Quitte le jeu lors du clique sur mItemQuitter
      */
 
-    public void Quitter(){
+    public void quitter(){
 
         System.exit(0);
 

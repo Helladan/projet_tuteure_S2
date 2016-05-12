@@ -4,7 +4,7 @@ package Model;
  * Grille de jeu. Tableau 2D de Case
  * @author Tarek
  */
-class Grille {
+public class Grille {
     private final static int LARGEUR_PAR_DEFAUT = 8;
     private final static int HAUTEUR_PAR_DEFAUT = 8;
     private final static int NBRE_DE_MINES_PAR_DEFAUT = 4;

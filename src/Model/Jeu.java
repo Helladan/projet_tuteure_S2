@@ -108,4 +108,8 @@ public class Jeu {
             grille.getGrille()[hauteur][larg-1].setAsDevoilee();
             devoileAuto(hauteur, larg-1);
     }
+
+    public Grille getGrille() {
+        return grille;
+    }
 }
