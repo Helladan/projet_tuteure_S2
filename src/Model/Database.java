@@ -1,7 +1,154 @@
 package Model;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.sql.*;
 
 public class Database
 {
+	private Connection c;
+	private Statement stmt;
+	private ResultSet resultatRequete;
+
+	/**
+	 * Constructeur de Database
+	 * Invoque la méthode de création de fichier de sauvegarde
+	 */
+	public Database()
+	{
+		creationSauvegarde();
+	}
+
+	/**
+	 * Getter de ResultatRequete
+	 *
+	 * Utilisation :
+	 *  while ( rs.next() ) {
+	 *      int id = rs.getInt("id");
+	 *      int taille  = rs.getInt("taille");
+	 *      int difficulte = rs.getInt("taille");
+	 *      String  nom = rs.getString("nom");
+	 *      double temps = rs.getDouble("temps");
+ *      }
+	 *
+	 * @return resultat de la requete
+	 */
+	public ResultSet getResultatRequete()
+	{
+		return resultatRequete;
+	}
+
+	/**
+	 * Methode qui crée le fichier de sauvegarde au besoin
+	 */
+	public void creationSauvegarde()
+	{
+		// On test si la sauvegarde existe
+		System.out.println("Recherche de la sauvegarde...");
+
+		try
+		{
+			new BufferedReader(new FileReader("scores.db"));
+			System.out.println("Fichier de sauvegarde trouvé");
+		}
+		// Si erreur, on la crée avec la table
+		catch(Exception e)
+		{
+			try
+			{
+				Class.forName("org.sqlite.JDBC");
+				c = DriverManager.getConnection("jdbc:sqlite:scores.db");
+
+				stmt = c.createStatement();
+				String sql = "CREATE TABLE chrono (" +
+						"id INTEGER PRIMARY KEY AUTOINCREMENT , " +
+						"taille TEXT NOT NULL, " +
+						"difficulte INT NOT NULL, " +
+						"nom CHAR(10), " +
+						"temps FLOAT)";
+				stmt.executeUpdate(sql);
+				stmt.close();
+				c.close();
+
+				System.out.println("Création du fichier de sauvegarde...");
+			}
+			catch(Exception exception)
+			{
+				System.out.println("Erreur sur la création du fichier de sauvegarde.");
+			}
+		}
+	}
+
+
+	/**
+	 * Methode qui insere un score dans la BDD
+	 *
+	 * @param tailleGrille taille de la grille
+	 * @param difficulte   difficulté de la partie
+	 * @param nom          nom du joueur
+	 * @param temps        temps du joueur pour finir la partie
+	 */
+	public void insertionScore(int tailleGrille, int difficulte, String nom, double temps)
+	{
+		try
+		{
+			Class.forName("org.sqlite.JDBC");
+			c = DriverManager.getConnection("jdbc:sqlite:scores.db");
+			c.setAutoCommit(false);
+
+			stmt = c.createStatement();
+			String sql = "INSERT INTO chrono (taille, " +
+					"difficulte, " +
+					"nom, " +
+					"temps) " +
+					"VALUES (" + tailleGrille + ", " +
+					difficulte + ", " +
+					"'" + nom + "', " +
+					temps + ");";
+			stmt.executeUpdate(sql);
+
+			stmt.close();
+			c.commit();
+			c.close();
+		}
+		catch(Exception e)
+		{
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+		}
+		System.out.println("Sauvegarde effectuée.");
+	}
+
+
+	/**
+	 * Méthode qui récupère les sauvegardes des parties précédentes suivant :
+	 *
+	 * @param tailleGrille taille de la grille
+	 * @param difficulte   difficulté de la partie
+	 */
+	public void recuperationSauvegarde(int tailleGrille, int difficulte)
+	{
+		try
+		{
+			String req;
+			Class.forName("org.sqlite.JDBC");
+			c = DriverManager.getConnection("jdbc:sqlite:scores.db");
+			c.setAutoCommit(false);
+
+			stmt = c.createStatement();
+
+			req = "SELECT nom, temps" +
+					"FROM chrono" +
+					"WHERE taille = "+ tailleGrille + " AND " +
+					"difficulte = " + difficulte +
+					"ORDER BY temps ASC " +
+					"LIMIT 0, 5;";
+
+			resultatRequete = stmt.executeQuery(req);
+		}
+		catch(Exception e)
+		{
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+		}
+	}
 }
