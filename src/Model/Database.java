@@ -23,12 +23,12 @@ public class Database
 	 * Getter de ResultatRequete
 	 *
 	 * Utilisation :
-	 *  while ( rs.next() ) {
-	 *      int id = rs.getInt("id");
-	 *      int taille  = rs.getInt("taille");
-	 *      int difficulte = rs.getInt("taille");
-	 *      String  nom = rs.getString("nom");
-	 *      double temps = rs.getDouble("temps");
+	 *  while ( resultatRequete.next() ) {
+	 *      int id = resultatRequete.getInt("id");
+	 *      int taille  = resultatRequete.getInt("taille");
+	 *      int difficulte = resultatRequete.getInt("taille");
+	 *      String  nom = resultatRequete.getString("nom");
+	 *      double temps = resultatRequete.getDouble("temps");
  *      }
 	 *
 	 * @return resultat de la requete
