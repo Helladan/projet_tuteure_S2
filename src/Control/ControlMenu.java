@@ -8,15 +8,11 @@ import java.awt.event.*;
 
 public class ControlMenu extends Control implements ActionListener {
     Fenetre fenetre;
-    fenetre.setControlMenu(this);
 
-
-    public ControlMenu(){
-
-    }
 
     public ControlMenu(Fenetre fenetre){
         this.fenetre = fenetre;
+        fenetre.setControlMenu(this);
     }
 
     /**
@@ -25,13 +21,13 @@ public class ControlMenu extends Control implements ActionListener {
      */
 
     public void actionPerformed(ActionEvent e){
-        if(e.getSource() == fenetre.mItemNouvellePartie){
+        if(e.getSource() == fenetre.getmItemNouvellePartie()){
             fenetre.restart();
         }
-        else if(e.getSource() == fenetre.mItemScores){
+        else if(e.getSource() == fenetre.getmItemScores()){
             fenetre.afficherScores();
         }
-        else if(e.getSource() == fenetre.mItemQuitter){
+        else if(e.getSource() == fenetre.getmItemQuitter()){
             fenetre.quitter();
         }
 
