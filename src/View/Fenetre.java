@@ -1,5 +1,7 @@
 package View;
 
+import Model.*;
+
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
@@ -24,8 +26,8 @@ public class Fenetre extends JFrame{
      * Constructeur de Fenetre
      */
 
-    public Fenetre(Grille g){
-        this.g=grid;
+    public Fenetre(Jeu j){
+        this.grid=j.getGrille();
 
         initAttribut();
         creerMenu();
@@ -37,9 +39,8 @@ public class Fenetre extends JFrame{
      * Initialisation des attributs
      */
 
-    public void initAttribut(Jeu jeu){
+    public void initAttribut(){
 
-        grille = jeu.getGrille();
         mItemNouvellePartie = new JMenuItem("Nouvelle partie");
         mItemScores = new JMenuItem("Scores");
         mItemQuitter = new JMenuItem("Quitter");
@@ -71,13 +72,19 @@ public class Fenetre extends JFrame{
      */
 
     public void creerGrille(){
-        int h;
-        int l;
+        int h,l,i,j;
 
         h=grid.getHauteur();
+        l=grid.getLargeur();
 
+        for(i=0;i>h;i++){
+            for(j=0;j>l;j++){
+                grille[i][j] = new JButton();
+            }
+        }
 
     }
+
 
     /**
      * Ajout d'écouteur sur les JMenuItem
@@ -99,7 +106,16 @@ public class Fenetre extends JFrame{
 
     public void setControlBouton(ActionListener al){
 
+        int h,l,i,j;
 
+        h=grid.getHauteur();
+        l=grid.getLargeur();
+
+        for(i=0;i>h;i++){
+            for(j=0;j>l;j++){
+                grille[i][j].addActionListener(al);
+            }
+        }
 
     }
 
