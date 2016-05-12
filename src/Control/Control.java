@@ -11,7 +11,7 @@ public abstract class Control
 	protected Jeu jeu;
 	protected Fenetre fenetre;
 	protected ControlMenu controlMenu;
-	protected  Grille grille;
+
 
 	/**
 	 * Constructeur par défaut de Control
@@ -31,17 +31,16 @@ public abstract class Control
 	 * @author Raphael-R-R
 	 */
 
-	public Control(Case case_, Chrono chrono, ControlMenu controlMenu)
-	{
-		this.case_ = case_;
-		this.chrono = chrono;
-		this.controlMenu = controlMenu;
-	}
+//	public Control(Case case_, Chrono chrono, ControlMenu controlMenu)
+//	{
+//		this.case_ = case_;
+//		this.chrono = chrono;
+//		this.controlMenu = controlMenu;
+//	}
 
-	public Control(Jeu jeu, Fenetre fenetre, Grille grille){
+	public Control(Jeu jeu, Fenetre fenetre){
 		this.jeu = jeu;
 		this.fenetre = fenetre;
-		this.grille=grille;
 	}
 }
 

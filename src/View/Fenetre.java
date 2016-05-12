@@ -100,6 +100,8 @@ public class Fenetre extends JFrame{
     public Grille getGrid() {
         return grid;
     }
+    
+    
 
     /**
      * Ajout d'écouteur sur les JMenuItem
@@ -119,7 +121,7 @@ public class Fenetre extends JFrame{
      * @param al
      */
 
-    public void setControlBouton(ActionListener al){
+    public void setControlButton(ActionListener al){
 
         int h,l,i,j;
 
@@ -168,4 +170,7 @@ public class Fenetre extends JFrame{
     }
 
 
+    public JButton[][] getGrille() {
+        return grille;
+    }
 }
