@@ -1,13 +1,17 @@
 package Control;
 
-import Model.Case;
+
 import Model.Chrono;
+import Model.Grille;
+import Model.Jeu;
+import View.Fenetre;
 
 public abstract class Control
 {
-	protected Case case_;
-	protected Chrono chrono;
+	protected Jeu jeu;
+	protected Fenetre fenetre;
 	protected ControlMenu controlMenu;
+	protected  Grille grille;
 
 	/**
 	 * Constructeur par défaut de Control
@@ -32,6 +36,12 @@ public abstract class Control
 		this.case_ = case_;
 		this.chrono = chrono;
 		this.controlMenu = controlMenu;
+	}
+
+	public Control(Jeu jeu, Fenetre fenetre, Grille grille){
+		this.jeu = jeu;
+		this.fenetre = fenetre;
+		this.grille=grille;
 	}
 }
 
