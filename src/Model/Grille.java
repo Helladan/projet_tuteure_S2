@@ -67,9 +67,20 @@ public class Grille {
      *
      * @return Le nombre de mines présents dans la grille (int).
      */
+
     public int getNombreDeMines() {
         return nombreDeMines;
     }
+
+	/**
+	 * Retourne la taille de la grille.
+	 *
+	 * @author : Raphael-R-R
+	 */
+
+	public int getTaille() {
+		return getHauteur() * getHauteur();
+	}
 
     /**
      * Génère une nouvelle grille.

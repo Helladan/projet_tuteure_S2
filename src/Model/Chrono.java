@@ -3,11 +3,14 @@ package Model;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Chrono {
     private float temps, meilleurTemps;
 	private Timer timer;
 	private Grille grille;
+	private Database database;
 
 	/**
 	 * Constructeur par défaut de chrono
@@ -20,7 +23,8 @@ public class Chrono {
 	/**
 	 * Première surcharge du constructeur de Chrono
 	 *
-	 * Récupère le meilleur temps et initialite grille.
+	 * Créer un objet Database, une référence vers un objet Grille,
+	 * et résupère le meilleur temps.
 	 * Les autres variables d'instances sont
 	 * initialisées par java.
 	 *
@@ -30,9 +34,10 @@ public class Chrono {
 	 */
 
 	public Chrono(Grille grille) {
+		this.database = new Database();
 		this.grille = grille;
 
-		meilleurTemps = getMeilleurTempsFromDB();
+		getMeilleurTempsFromDB();
 	}
 
 	/**
@@ -93,21 +98,51 @@ public class Chrono {
 	/**
 	 * Récupère le meilleur temps depuis la base de donnée
 	 *
+	 * TODO : Difficultée
+	 *
+	 * Prendre en compte la difficultée lorsqu'elle
+	 * sera gérée dans le model et la base de donnée.
+	 *
 	 * @author : Raphael-R-R
 	 */
 
-	private float getMeilleurTempsFromDB() {
+	private void getMeilleurTempsFromDB() {
+		int taille = grille.getHauteur() * grille.getLargeur();
+		database.recuperationSauvegarde(taille, 0);
 
+		ResultSet resultatRequete = database.getResultatRequete();
+
+		try
+		{
+			/**
+			 * D'abord on récupère la ligne actuelle.
+			 * Si meilleurTemps == 0, c'est que meilleurTemps
+			 * n'a pas encore été récupéré, on peut alors
+			 * l'obtenir depuis la base de donnée.
+			 */
+
+			while(resultatRequete.next() && meilleurTemps == 0) {
+				if(resultatRequete.getInt("taille") == taille) {
+					meilleurTemps = resultatRequete.getFloat("temps");
+				}
+			}
+		}
+		catch(SQLException e)
+		{
+			System.out.println("Erreur sur le parcours de resultatRequete dans Chrono.getMeilleurTempsFromDB()");
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * Ajoute le meilleur temps à la base de donnée
 	 *
+	 * TODO : A compléter
+	 *
 	 * @author : Raphael-R-R
 	 */
 
-	private float setMeilleurTempsInDB() {
-
+	private void setMeilleurTempsInDB() {
 	}
 
 	/**
@@ -118,6 +153,6 @@ public class Chrono {
 	 */
 
 	private boolean isMeilleurTemps() {
-
+		return (temps < meilleurTemps);
 	}
 }
