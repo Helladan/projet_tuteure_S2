@@ -18,7 +18,7 @@ public class ControlButton extends Control implements ActionListener{
     }
 
     /**
-     * Tai
+     * Traitement des boutons
      * @param e
      */
 
@@ -31,4 +31,6 @@ public class ControlButton extends Control implements ActionListener{
                 }
             }
     }
+
+
 }
