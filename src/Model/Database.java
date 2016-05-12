@@ -41,7 +41,7 @@ public class Database
 	/**
 	 * Methode qui crée le fichier de sauvegarde au besoin
 	 */
-	public void creationSauvegarde()
+	private void creationSauvegarde()
 	{
 		// On test si la sauvegarde existe
 		System.out.println("Recherche de la sauvegarde...");
