@@ -85,6 +85,21 @@ public class Fenetre extends JFrame{
 
     }
 
+    public JMenuItem getmItemQuitter() {
+        return mItemQuitter;
+    }
+
+    public JMenuItem getmItemScores() {
+        return mItemScores;
+    }
+
+    public JMenuItem getmItemNouvellePartie() {
+        return mItemNouvellePartie;
+    }
+
+    public Grille getGrid() {
+        return grid;
+    }
 
     /**
      * Ajout d'écouteur sur les JMenuItem
