@@ -49,6 +49,14 @@ public class Fenetre extends JFrame{
     }
 
     /**
+     * Rafraichissement de la fenêtre après clic sur case
+     */
+
+    public void updateFen() {
+
+    }
+
+    /**
      * Création de la barre de menu
      */
 
@@ -97,11 +105,10 @@ public class Fenetre extends JFrame{
         return mItemNouvellePartie;
     }
 
-    public Grille getGrid() {
-        return grid;
+    public JButton[][] getGrille() {
+        return grille;
     }
-    
-    
+
 
     /**
      * Ajout d'écouteur sur les JMenuItem
@@ -169,8 +176,4 @@ public class Fenetre extends JFrame{
 
     }
 
-
-    public JButton[][] getGrille() {
-        return grille;
-    }
 }
