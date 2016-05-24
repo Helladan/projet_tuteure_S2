@@ -139,6 +139,8 @@ public class Chrono {
 	 * retourne vrai.
 	 *
 	 * @param pseudo : Le pseudo du joueur.
+	 *
+	 * @author : Raphael-R-R
 	 */
 
 	public void setMeilleurTemps(String pseudo) {
