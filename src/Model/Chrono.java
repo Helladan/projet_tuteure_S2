@@ -135,14 +135,32 @@ public class Chrono {
 	}
 
 	/**
+	 * Affecte @temps à la variable @meilleurTemps, si isMeilleurTemps()
+	 * retourne vrai.
+	 *
+	 * @param pseudo : Le pseudo du joueur.
+	 */
+
+	public void setMeilleurTemps(String pseudo) {
+		if(isMeilleurTemps()) {
+			meilleurTemps = temps;
+
+			setMeilleurTempsInDB(pseudo);
+		}
+	}
+
+	/**
 	 * Ajoute le meilleur temps à la base de donnée
 	 *
-	 * TODO : A compléter
+	 * TODO : Gestion de la difficultée
+	 *
+	 * @param pseudo : Le pseudo du joueur
 	 *
 	 * @author : Raphael-R-R
 	 */
 
-	private void setMeilleurTempsInDB() {
+	public void setMeilleurTempsInDB(String pseudo) {
+		database.insertionScore(grille.getTaille(), 0, pseudo, meilleurTemps);
 	}
 
 	/**
