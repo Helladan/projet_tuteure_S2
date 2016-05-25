@@ -48,6 +48,7 @@ public class Jeu {
 	 */
 	public void devoileCase(int hauteur, int larg) {
 		grille.getGrille()[hauteur][larg].setAsDevoilee();
+		grille.incrementeCasesDevoilees();
 		if(grille.getGrille()[hauteur][larg].isMine()) grille.setGrillePerdue();
 		devoileAuto(hauteur, larg);
 		gestionChrono();
@@ -83,36 +84,28 @@ public class Jeu {
 	private void devoileAuto(int hauteur, int larg) {
 		if(!(hauteur == 0 && larg == 0)
 				&& !grille.getGrille()[hauteur - 1][larg - 1].isMine())
-			grille.getGrille()[hauteur - 1][larg - 1].setAsDevoilee();
-		devoileAuto(hauteur - 1, larg - 1);
+			devoileCase(hauteur - 1, larg - 1);
 		if(!(hauteur == 0)
 				&& !grille.getGrille()[hauteur - 1][larg].isMine())
-			grille.getGrille()[hauteur - 1][larg].setAsDevoilee();
-		devoileAuto(hauteur - 1, larg);
+			devoileCase(hauteur - 1, larg);
 		if(!(hauteur == 0 && larg == grille.getLargeur() - 1)
 				&& !grille.getGrille()[hauteur - 1][larg + 1].isMine())
-			grille.getGrille()[hauteur - 1][larg + 1].setAsDevoilee();
-		devoileAuto(hauteur - 1, larg + 1);
+			devoileCase(hauteur - 1, larg + 1);
 		if(!(larg == grille.getLargeur() - 1)
 				&& !grille.getGrille()[hauteur][larg + 1].isMine())
-			grille.getGrille()[hauteur][larg + 1].setAsDevoilee();
-		devoileAuto(hauteur, larg + 1);
+			devoileCase(hauteur, larg + 1);
 		if(!(hauteur == grille.getHauteur() - 1 && larg == grille.getLargeur() - 1)
 				&& !grille.getGrille()[hauteur + 1][larg + 1].isMine())
-			grille.getGrille()[hauteur + 1][larg + 1].setAsDevoilee();
-		devoileAuto(hauteur + 1, larg + 1);
+			devoileCase(hauteur + 1, larg + 1);
 		if(!(hauteur == grille.getHauteur() - 1)
 				&& !grille.getGrille()[hauteur + 1][larg].isMine())
-			grille.getGrille()[hauteur + 1][larg].setAsDevoilee();
-		devoileAuto(hauteur + 1, larg);
+			devoileCase(hauteur + 1, larg);
 		if(!(hauteur == grille.getHauteur() - 1 && larg == 0)
 				&& !grille.getGrille()[hauteur + 1][larg - 1].isMine())
-			grille.getGrille()[hauteur + 1][larg - 1].setAsDevoilee();
-		devoileAuto(hauteur + 1, larg - 1);
+			devoileCase(hauteur + 1, larg - 1);
 		if(!(larg == 0)
 				&& !grille.getGrille()[hauteur][larg - 1].isMine())
-			grille.getGrille()[hauteur][larg - 1].setAsDevoilee();
-		devoileAuto(hauteur, larg - 1);
+			devoileCase(hauteur, larg - 1);
 	}
 
 	public Grille getGrille() {

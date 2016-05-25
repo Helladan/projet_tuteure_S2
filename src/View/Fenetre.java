@@ -4,6 +4,7 @@ import Model.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
@@ -34,16 +35,15 @@ public class Fenetre extends JFrame {
 	public Fenetre(Jeu j) {
 		this.grid = j.getGrille();
 
-		this.panel = new JPanel(new GridLayout(grid.getHauteur(), grid.getLargeur()));
-
 		initAttribut();
 		creerMenu();
+		creerChrono();
 		creerGrille();
+		setContentPane(panel);
 		setSize(LARGEUR, HAUTEUR);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Demineur");
 		setResizable(false);
-		setVisible(true);
 		setFocusable(true);
 
 		updateFen();
@@ -58,8 +58,9 @@ public class Fenetre extends JFrame {
 		mItemNouvellePartie = new JMenuItem("Nouvelle partie");
 		mItemScores = new JMenuItem("Scores");
 		mItemQuitter = new JMenuItem("Quitter");
-		//chrono =
-
+		chrono = new JLabel("");
+		panel = new JPanel();
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 	}
 
 	/**
@@ -67,15 +68,30 @@ public class Fenetre extends JFrame {
 	 */
 
 	public void updateFen() {
-		int i, j;
+		/*int i, j;
 
 		for(j = 0; j < grid.getHauteur(); j++) {
 			for(i = 0; i < grid.getLargeur(); i++)
 				panel.add(grille[j][i]);
-		}
+		}*/
+	}
 
-		setContentPane(panel);
-		setVisible(true);
+	/**
+	 * Ajoute le chrono à la fenetre.
+	 */
+	private void creerChrono(){
+		JLabel labelTemps = new JLabel("Temps : ");
+		JPanel panelChrono = new JPanel();
+		panelChrono.setLayout(new BoxLayout(panelChrono, BoxLayout
+				.X_AXIS));
+		Timer t=new Timer(1000,new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				updateFen();
+			}
+		});
+		panelChrono.add(labelTemps);
+		panelChrono.add(chrono);
+		panel.add(panelChrono);
 	}
 
 	/**
@@ -105,15 +121,17 @@ public class Fenetre extends JFrame {
 
 		h = grid.getHauteur();
 		l = grid.getLargeur();
+		JPanel panelGrille = new JPanel(new GridLayout(h, l));
 
 		this.grille = new JButton[h][l];
 
 		for(i = 0; i < h; i++) {
 			for(j = 0; j < l; j++) {
 				grille[i][j] = new JButton();
+				panelGrille.add(grille[i][j]);
 			}
 		}
-
+		panel.add(panelGrille);
 	}
 
 	public JMenuItem getmItemQuitter() {

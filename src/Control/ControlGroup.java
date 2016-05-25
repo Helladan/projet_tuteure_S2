@@ -18,6 +18,6 @@ public class ControlGroup {
 
 		controlButton = new ControlButton(jeu, fenetre);
 		controlMenu = new ControlMenu(fenetre);
-
+		fenetre.setVisible(true);
 	}
 }
