@@ -15,12 +15,13 @@ public class Fenetre extends JFrame{
      * Déclaration des attributs
      */
 
-    Grille grid;
-    JMenuItem mItemNouvellePartie;
-    JMenuItem mItemScores;
-    JMenuItem mItemQuitter;
-    JLabel chrono;
-    JButton[][] grille;
+    protected Grille grid;
+    protected JMenuItem mItemNouvellePartie;
+    protected JMenuItem mItemScores;
+    protected JMenuItem mItemQuitter;
+    protected JLabel chrono;
+    protected JButton[][] grille;
+	protected JPanel panel;
 
     public static final int LARGEUR = 600;
     public static final int HAUTEUR = 600;
@@ -31,6 +32,8 @@ public class Fenetre extends JFrame{
 
     public Fenetre(Jeu j){
         this.grid=j.getGrille();
+
+		this.panel = new JPanel();
 
         initAttribut();
         creerMenu();
@@ -60,7 +63,10 @@ public class Fenetre extends JFrame{
      */
 
     public void updateFen() {
+		int i, j;
 
+		setContentPane(this);
+		setVisible(true);
     }
 
     /**
@@ -163,7 +169,7 @@ public class Fenetre extends JFrame{
     }
 
     /**
-     * Affichage des scores lors du clique sur mItemScores
+     *  Affiche des scores lors du clique sur mItemScores
      */
 
     public void afficherScores(){
