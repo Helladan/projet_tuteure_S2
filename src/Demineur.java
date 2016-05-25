@@ -1,6 +1,6 @@
-/**
- * Created by rragoomu on 25/05/16.
- */
+import Model.Jeu;
+import View.Affichage;
+import View.Fenetre;
 
 /**
  * Classe comprenant le main du jeu
@@ -10,6 +10,8 @@
 
 public class Demineur {
 	public static void main(String[] args) {
-
+		Jeu jeu = new Jeu();
+		Fenetre fenetre = new Fenetre(jeu);
+		Affichage affichage = new Affichage(fenetre);
 	}
 }

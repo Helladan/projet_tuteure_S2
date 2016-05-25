@@ -22,6 +22,9 @@ public class Fenetre extends JFrame{
     JLabel chrono;
     JButton[][] grille;
 
+    public static final int LARGEUR = 600;
+    public static final int HAUTEUR = 600;
+
     /**
      * Constructeur de Fenetre
      */
@@ -31,8 +34,12 @@ public class Fenetre extends JFrame{
 
         initAttribut();
         creerMenu();
-        pack();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(LARGEUR, HAUTEUR);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Demineur");
+		setResizable(false);
+		setVisible(true);
+		setFocusable(true);
     }
 
     /**
@@ -72,7 +79,6 @@ public class Fenetre extends JFrame{
         barMenu.add(menu);
 
         setJMenuBar(barMenu);
-
     }
 
     /**
