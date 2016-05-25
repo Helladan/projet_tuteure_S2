@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Chrono {
-    private float temps, meilleurTemps;
+	private float temps, meilleurTemps;
 	private Timer timer;
 	private Grille grille;
 	private Database database;
@@ -22,14 +22,13 @@ public class Chrono {
 
 	/**
 	 * Première surcharge du constructeur de Chrono
-	 *
+	 * <p>
 	 * Créer un objet Database, une référence vers un objet Grille,
 	 * et résupère le meilleur temps.
 	 * Les autres variables d'instances sont
 	 * initialisées par java.
 	 *
 	 * @param grille Une instance de Grille
-	 * 
 	 * @author : Raphael-R-R
 	 */
 
@@ -97,9 +96,9 @@ public class Chrono {
 
 	/**
 	 * Récupère le meilleur temps depuis la base de donnée
-	 *
+	 * <p>
 	 * TODO : Difficultée
-	 *
+	 * <p>
 	 * Prendre en compte la difficultée lorsqu'elle
 	 * sera gérée dans le model et la base de donnée.
 	 *
@@ -107,13 +106,12 @@ public class Chrono {
 	 */
 
 	private void getMeilleurTempsFromDB() {
-		int taille = grille.getHauteur() * grille.getLargeur();
+		int taille = grille.getHauteur()*grille.getLargeur();
 		database.recuperationSauvegarde(taille, 0);
 
 		ResultSet resultatRequete = database.getResultatRequete();
 
-		try
-		{
+		try {
 			/**
 			 * D'abord on récupère la ligne actuelle.
 			 * Si meilleurTemps == 0, c'est que meilleurTemps
@@ -127,8 +125,7 @@ public class Chrono {
 				}
 			}
 		}
-		catch(SQLException e)
-		{
+		catch(SQLException e) {
 			System.out.println("Erreur sur le parcours de resultatRequete dans Chrono.getMeilleurTempsFromDB()");
 			e.printStackTrace();
 		}
@@ -139,7 +136,6 @@ public class Chrono {
 	 * retourne vrai.
 	 *
 	 * @param pseudo : Le pseudo du joueur.
-	 *
 	 * @author : Raphael-R-R
 	 */
 
@@ -153,11 +149,10 @@ public class Chrono {
 
 	/**
 	 * Ajoute le meilleur temps à la base de donnée
-	 *
+	 * <p>
 	 * TODO : Gestion de la difficultée
 	 *
 	 * @param pseudo : Le pseudo du joueur
-	 *
 	 * @author : Raphael-R-R
 	 */
 

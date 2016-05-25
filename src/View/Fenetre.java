@@ -10,8 +10,7 @@ import java.awt.event.ActionListener;
  * @author Nassime
  */
 
-public class Fenetre extends JFrame
-{
+public class Fenetre extends JFrame {
 
 	/**
 	 * Déclaration des attributs
@@ -32,8 +31,7 @@ public class Fenetre extends JFrame
 	 * Constructeur de Fenetre
 	 */
 
-	public Fenetre(Jeu j)
-	{
+	public Fenetre(Jeu j) {
 		this.grid = j.getGrille();
 
 		this.panel = new JPanel(new GridLayout(grid.getHauteur(), grid.getLargeur()));
@@ -55,8 +53,7 @@ public class Fenetre extends JFrame
 	 * Initialisation des attributs
 	 */
 
-	public void initAttribut()
-	{
+	public void initAttribut() {
 
 		mItemNouvellePartie = new JMenuItem("Nouvelle partie");
 		mItemScores = new JMenuItem("Scores");
@@ -69,12 +66,10 @@ public class Fenetre extends JFrame
 	 * Rafraichissement de la fenêtre après clic sur case
 	 */
 
-	public void updateFen()
-	{
+	public void updateFen() {
 		int i, j;
 
-		for(j = 0; j < grid.getHauteur(); j++)
-		{
+		for(j = 0; j < grid.getHauteur(); j++) {
 			for(i = 0; i < grid.getLargeur(); i++)
 				panel.add(grille[j][i]);
 		}
@@ -87,8 +82,7 @@ public class Fenetre extends JFrame
 	 * Création de la barre de menu
 	 */
 
-	public void creerMenu()
-	{
+	public void creerMenu() {
 
 		JMenuBar barMenu = new JMenuBar();
 		JMenu menu = new JMenu("Menu");
@@ -106,8 +100,7 @@ public class Fenetre extends JFrame
 	 * Création de la grille
 	 */
 
-	public void creerGrille()
-	{
+	public void creerGrille() {
 		int h, l, i, j;
 
 		h = grid.getHauteur();
@@ -123,23 +116,19 @@ public class Fenetre extends JFrame
 
 	}
 
-	public JMenuItem getmItemQuitter()
-	{
+	public JMenuItem getmItemQuitter() {
 		return mItemQuitter;
 	}
 
-	public JMenuItem getmItemScores()
-	{
+	public JMenuItem getmItemScores() {
 		return mItemScores;
 	}
 
-	public JMenuItem getmItemNouvellePartie()
-	{
+	public JMenuItem getmItemNouvellePartie() {
 		return mItemNouvellePartie;
 	}
 
-	public JButton[][] getGrille()
-	{
+	public JButton[][] getGrille() {
 		return grille;
 	}
 
@@ -150,13 +139,10 @@ public class Fenetre extends JFrame
 	 * @param al
 	 */
 
-	public void setControlMenu(ActionListener al)
-	{
-
+	public void setControlMenu(ActionListener al) {
 		mItemNouvellePartie.addActionListener(al);
 		mItemScores.addActionListener(al);
 		mItemQuitter.addActionListener(al);
-
 	}
 
 	/**
@@ -165,18 +151,15 @@ public class Fenetre extends JFrame
 	 * @param al
 	 */
 
-	public void setControlButton(ActionListener al)
-	{
+	public void setControlButton(ActionListener al) {
 
 		int h, l, i, j;
 
 		h = grid.getHauteur();
 		l = grid.getLargeur();
 
-		for(i = 0; i > h; i++)
-		{
-			for(j = 0; j > l; j++)
-			{
+		for(i = 0; i > h; i++) {
+			for(j = 0; j > l; j++) {
 				grille[i][j].addActionListener(al);
 			}
 		}
@@ -187,23 +170,18 @@ public class Fenetre extends JFrame
 	 * Affichage d'une nouvelle grille lors du clique sur mItemNouvellePartie
 	 */
 
-	public void restart()
-	{
-
+	public void restart() {
 		getContentPane().removeAll();
 
 		creerGrille();
 		pack();
-
 	}
 
 	/**
 	 * Affiche des scores lors du clique sur mItemScores
 	 */
 
-	public void afficherScores()
-	{
-
+	public void afficherScores() {
 
 	}
 
@@ -211,11 +189,8 @@ public class Fenetre extends JFrame
 	 * Quitte le jeu lors du clique sur mItemQuitter
 	 */
 
-	public void quitter()
-	{
-
+	public void quitter() {
 		System.exit(0);
-
 	}
 
 }

@@ -6,7 +6,7 @@ import java.awt.*;
  * Classe Case, représente les cases du démineur.
  * @author Tarek
  */
-class Case {
+public class Case {
     private boolean devoilee, mine, drapeau;
     private int minesAdjacentes;
     final private Point coord;

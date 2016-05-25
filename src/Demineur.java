@@ -1,3 +1,4 @@
+import Control.ControlGroup;
 import Model.Jeu;
 import View.Fenetre;
 
@@ -10,6 +11,7 @@ import View.Fenetre;
 public class Demineur {
 	public static void main(String[] args) {
 		Jeu jeu = new Jeu();
-		Fenetre fenetre = new Fenetre(jeu);
+
+		ControlGroup controlGroup = new ControlGroup(jeu);
 	}
 }
