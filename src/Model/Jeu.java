@@ -81,14 +81,15 @@ public class Jeu {
 	 * @param hauteur Pos y de la case a tester.
 	 * @param larg    Pos x de la case a tester.
 	 */
+	//TODO Corriger les conditions
 	private void devoileAuto(int hauteur, int larg) {
-		if(!(hauteur == 0 && larg == 0)
+		if(!(hauteur == 0 || larg == 0)
 				&& !grille.getGrille()[hauteur - 1][larg - 1].isMine())
 			devoileCase(hauteur - 1, larg - 1);
 		if(!(hauteur == 0)
 				&& !grille.getGrille()[hauteur - 1][larg].isMine())
 			devoileCase(hauteur - 1, larg);
-		if(!(hauteur == 0 && larg == grille.getLargeur() - 1)
+		if(!(hauteur == 0 || larg == grille.getLargeur() - 1)
 		&& !grille.getGrille()[hauteur - 1][larg + 1].isMine())
 			devoileCase(hauteur - 1, larg + 1);
 		if(!(larg == grille.getLargeur() - 1)
