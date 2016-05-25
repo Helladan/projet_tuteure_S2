@@ -79,7 +79,7 @@ public class Fenetre extends JFrame
 				panel.add(grille[j][i]);
 		}
 
-		setContentPane(this);
+		setContentPane(panel);
 		setVisible(true);
 	}
 
