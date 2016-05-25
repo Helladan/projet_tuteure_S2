@@ -13,6 +13,7 @@ public class ControlButton extends Control implements ActionListener {
 	public ControlButton(Jeu jeu, Fenetre fenetre) {
 		super(jeu, fenetre);
 		fenetre.setControlButton(this);
+
 	}
 
 	/**
@@ -27,10 +28,21 @@ public class ControlButton extends Control implements ActionListener {
 			for(int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
 				if(this.fenetre.getGrille()[i][j] == source) {
 					jeu.devoileCase(i, j);
+					System.out.print("Clic sur case");
+				}
+			}
+		}
+		for(int i = 0; i < this.jeu.getGrille().getHauteur(); i++) {
+			for(int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
+				if (this.jeu.getGrille().getGrille()[i][j].isMine()) {
+					fenetre.editColor(i,j);
+					fenetre.updateFen();
+					System.out.print("-------------------------------------");
 				}
 			}
 		}
 	}
+
 
 
 }

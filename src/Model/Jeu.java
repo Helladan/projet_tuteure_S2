@@ -89,7 +89,7 @@ public class Jeu {
 				&& !grille.getGrille()[hauteur - 1][larg].isMine())
 			devoileCase(hauteur - 1, larg);
 		if(!(hauteur == 0 && larg == grille.getLargeur() - 1)
-				&& !grille.getGrille()[hauteur - 1][larg + 1].isMine())
+		&& !grille.getGrille()[hauteur - 1][larg + 1].isMine())
 			devoileCase(hauteur - 1, larg + 1);
 		if(!(larg == grille.getLargeur() - 1)
 				&& !grille.getGrille()[hauteur][larg + 1].isMine())

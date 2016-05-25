@@ -176,8 +176,8 @@ public class Fenetre extends JFrame {
 		h = grid.getHauteur();
 		l = grid.getLargeur();
 
-		for(i = 0; i > h; i++) {
-			for(j = 0; j > l; j++) {
+		for(i = 0; i < h; i++) {
+			for(j = 0; j < l; j++) {
 				grille[i][j].addActionListener(al);
 			}
 		}
@@ -211,4 +211,7 @@ public class Fenetre extends JFrame {
 		System.exit(0);
 	}
 
+	public void editColor(int i, int j){
+		grille[i][j].setBackground(Color.LIGHT_GRAY);
+	}
 }
