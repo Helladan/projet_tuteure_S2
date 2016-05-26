@@ -81,32 +81,22 @@ public class Jeu {
 	 * @param hauteur Pos y de la case a tester.
 	 * @param larg    Pos x de la case a tester.
 	 */
-	//TODO Corriger les conditions
 	private void devoileAuto(int hauteur, int larg) {
-		if(!(hauteur == 0 || larg == 0)
-				&& !grille.getGrille()[hauteur - 1][larg - 1].isMine())
-			devoileCase(hauteur - 1, larg - 1);
-		if(!(hauteur == 0)
-				&& !grille.getGrille()[hauteur - 1][larg].isMine())
-			devoileCase(hauteur - 1, larg);
-		if(!(hauteur == 0 || larg == grille.getLargeur() - 1)
-		&& !grille.getGrille()[hauteur - 1][larg + 1].isMine())
-			devoileCase(hauteur - 1, larg + 1);
-		if(!(larg == grille.getLargeur() - 1)
-				&& !grille.getGrille()[hauteur][larg + 1].isMine())
-			devoileCase(hauteur, larg + 1);
-		if(!(hauteur == grille.getHauteur() - 1 && larg == grille.getLargeur() - 1)
-				&& !grille.getGrille()[hauteur + 1][larg + 1].isMine())
-			devoileCase(hauteur + 1, larg + 1);
-		if(!(hauteur == grille.getHauteur() - 1)
-				&& !grille.getGrille()[hauteur + 1][larg].isMine())
-			devoileCase(hauteur + 1, larg);
-		if(!(hauteur == grille.getHauteur() - 1 && larg == 0)
-				&& !grille.getGrille()[hauteur + 1][larg - 1].isMine())
-			devoileCase(hauteur + 1, larg - 1);
-		if(!(larg == 0)
-				&& !grille.getGrille()[hauteur][larg - 1].isMine())
-			devoileCase(hauteur, larg - 1);
+		int i,j,h,l;
+		for(i=-1;i<2;i++){
+			h = hauteur+i;
+			if(h<0 || h>=grille.getHauteur())continue;
+			for(j=-1;j<2;j++){
+				if(i == 0 && j == 0)continue;
+				l = larg+j;
+				if(l<0 || l>=grille.getLargeur())continue;
+				if(!grille.getGrille()[h][l].isMine() && grille
+						.getGrille()
+						[h][l].getMinesAdjacentes() == 0 && !grille.getGrille
+						()[h][l].isDevoilee())
+					devoileCase(h, l);
+			}
+		}
 	}
 
 	public Grille getGrille() {

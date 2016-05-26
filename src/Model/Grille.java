@@ -103,20 +103,30 @@ public class Grille {
 		int i, j;
 		double probMine = (double) nombreDeMines/(hauteur*largeur);
 		int minesAPlace = nombreDeMines;
-		for(i = 0; i < hauteur; i++) {
-			for(j = 0; j < largeur; j++) {
-				if(minesAPlace != 0) {
-					if(Math.random() <= probMine) {
-						grille[i][j].setAsMine();
-						minesAPlace--;
-						if(i != 0 && j != 0) grille[i - 1][j - 1].incrementeMinesAdjacentes();
-						if(i != 0) grille[i - 1][j].incrementeMinesAdjacentes();
-						if(i != 0 && j != largeur - 1) grille[i - 1][j + 1].incrementeMinesAdjacentes();
-						if(j != largeur - 1) grille[i][j + 1].incrementeMinesAdjacentes();
-						if(i != hauteur - 1 && j != largeur - 1) grille[i + 1][j + 1].incrementeMinesAdjacentes();
-						if(i != hauteur - 1) grille[i + 1][j].incrementeMinesAdjacentes();
-						if(i != hauteur - 1 && j != 0) grille[i + 1][j - 1].incrementeMinesAdjacentes();
-						if(j != 0) grille[i][j - 1].incrementeMinesAdjacentes();
+		while(minesAPlace>0) {
+			for (i = 0; i < hauteur; i++) {
+				for (j = 0; j < largeur; j++) {
+					if (minesAPlace != 0) {
+						if (Math.random() <= probMine) {
+							grille[i][j].setAsMine();
+							minesAPlace--;
+							if (i != 0 && j != 0)
+								grille[i - 1][j - 1].incrementeMinesAdjacentes();
+							if (i != 0)
+								grille[i - 1][j].incrementeMinesAdjacentes();
+							if (i != 0 && j != largeur - 1)
+								grille[i - 1][j + 1].incrementeMinesAdjacentes();
+							if (j != largeur - 1)
+								grille[i][j + 1].incrementeMinesAdjacentes();
+							if (i != hauteur - 1 && j != largeur - 1)
+								grille[i + 1][j + 1].incrementeMinesAdjacentes();
+							if (i != hauteur - 1)
+								grille[i + 1][j].incrementeMinesAdjacentes();
+							if (i != hauteur - 1 && j != 0)
+								grille[i + 1][j - 1].incrementeMinesAdjacentes();
+							if (j != 0)
+								grille[i][j - 1].incrementeMinesAdjacentes();
+						}
 					}
 				}
 			}
