@@ -50,7 +50,9 @@ public class Jeu {
 		grille.getGrille()[hauteur][larg].setAsDevoilee();
 		grille.incrementeCasesDevoilees();
 		if(grille.getGrille()[hauteur][larg].isMine()) grille.setGrillePerdue();
-		devoileAuto(hauteur, larg);
+		if(grille.getGrille()[hauteur][larg].getMinesAdjacentes() ==
+				0)devoileAuto
+				(hauteur, larg);
 		gestionChrono();
 	}
 
@@ -90,9 +92,7 @@ public class Jeu {
 				if(i == 0 && j == 0)continue;
 				l = larg+j;
 				if(l<0 || l>=grille.getLargeur())continue;
-				if(!grille.getGrille()[h][l].isMine() && grille
-						.getGrille()
-						[h][l].getMinesAdjacentes() == 0 && !grille.getGrille
+				if(!grille.getGrille()[h][l].isMine() &&  !grille.getGrille
 						()[h][l].isDevoilee())
 					devoileCase(h, l);
 			}
