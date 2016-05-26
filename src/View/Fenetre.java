@@ -26,6 +26,7 @@ public class Fenetre extends JFrame {
 	protected JPanel panel;
 	public Timer timer;
 	protected double compteur1,compteur2;
+	protected Jeu jeu;
 
 	public static final int LARGEUR = 600;
 	public static final int HAUTEUR = 600;
@@ -35,6 +36,7 @@ public class Fenetre extends JFrame {
 	 */
 
 	public Fenetre(Jeu j) {
+		this.jeu=j;
 		this.grid = j.getGrille();
 
 		initAttribut();
@@ -57,6 +59,7 @@ public class Fenetre extends JFrame {
 
 	public void initAttribut() {
 
+		jeu = new Jeu();
 		mItemNouvellePartie = new JMenuItem("Nouvelle partie");
 		mItemScores = new JMenuItem("Scores");
 		mItemQuitter = new JMenuItem("Quitter");
@@ -226,5 +229,20 @@ public class Fenetre extends JFrame {
 
 	public void editColor(int i, int j){
 		grille[i][j].setBackground(Color.LIGHT_GRAY);
+	}
+
+	public void afficherNbre(){
+		// Ecrit sur les cases le nombre de mines adjacentes
+		for(int i = 0; i < this.jeu.getGrille().getHauteur(); i++) {
+			for(int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
+				if (this.jeu.getGrille().getGrille()[i][j].isDevoilee()) {
+					editColor(i,j);
+					//if (jeu.getGrille().getGrille()[i][j].getMinesAdjacentes() !=0.0) {
+					getGrille()[i][j].setText(Integer.toString(jeu.getGrille().getGrille()[i][j].getMinesAdjacentes()));
+					updateFen();
+					//}
+				}
+			}
+		}
 	}
 }

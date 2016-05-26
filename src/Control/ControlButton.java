@@ -36,18 +36,9 @@ public class ControlButton extends Control implements ActionListener {
 					}else {
 
 					}
-				}
-			}
-		}
-		// Ecrit sur les cases le nombre de mines adjacentes
-		for(int i = 0; i < this.jeu.getGrille().getHauteur(); i++) {
-			for(int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
-				if (this.jeu.getGrille().getGrille()[i][j].isDevoilee()) {
-					fenetre.editColor(i,j);
-					//if (jeu.getGrille().getGrille()[i][j].getMinesAdjacentes() !=0.0) {
-						fenetre.getGrille()[i][j].setText(Integer.toString(jeu.getGrille().getGrille()[i][j].getMinesAdjacentes()));
-						fenetre.updateFen();
-					//}
+
+					fenetre.afficherNbre();
+
 				}
 			}
 		}
