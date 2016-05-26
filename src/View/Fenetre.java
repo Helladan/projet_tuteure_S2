@@ -24,6 +24,8 @@ public class Fenetre extends JFrame {
 	protected JLabel chrono;
 	protected JButton[][] grille;
 	protected JPanel panel;
+	public Timer timer;
+	protected double compteur1,compteur2;
 
 	public static final int LARGEUR = 600;
 	public static final int HAUTEUR = 600;
@@ -172,6 +174,17 @@ public class Fenetre extends JFrame {
 	public void setControlButton(ActionListener al) {
 
 		int h, l, i, j;
+
+		timer = new javax.swing.Timer(10, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				compteur1 = compteur1 + 0.01;
+
+				compteur2 = (double) ((int) (compteur1 * 10)) / 10;
+
+				chrono.setText("" + compteur2);
+			}
+		});
 
 		h = grid.getHauteur();
 		l = grid.getLargeur();

@@ -24,6 +24,7 @@ public class ControlButton extends Control implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 
+		fenetre.timer.start();
 
 		// A partir des coordonnées du clic, dévoile la case et celles adjacentes
 
