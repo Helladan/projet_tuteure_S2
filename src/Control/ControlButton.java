@@ -13,7 +13,6 @@ public class ControlButton extends Control implements ActionListener {
 	public ControlButton(Jeu jeu, Fenetre fenetre) {
 		super(jeu, fenetre);
 		fenetre.setControlButton(this);
-
 	}
 
 	/**
@@ -24,20 +23,30 @@ public class ControlButton extends Control implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
+
+
+		// A partir des coordonnées du clic, dévoile la case et celles adjacentes
+
 		for(int i = 0; i < this.jeu.getGrille().getHauteur(); i++) {
 			for(int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
 				if(this.fenetre.getGrille()[i][j] == source) {
-					System.out.println("Clic sur case");
-					jeu.devoileCase(i, j);
+					if (!this.jeu.getGrille().getGrille()[i][j].isMine() ) {
+						jeu.devoileCase(i, j);
+					}else {
+
+					}
 				}
 			}
 		}
+		// Ecrit sur les cases le nombre de mines adjacentes
 		for(int i = 0; i < this.jeu.getGrille().getHauteur(); i++) {
 			for(int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
-				if (! this.jeu.getGrille().getGrille()[i][j].isMine()) {
+				if (this.jeu.getGrille().getGrille()[i][j].isDevoilee()) {
 					fenetre.editColor(i,j);
-					fenetre.updateFen();
-					System.out.print("-------------------------------------");
+					//if (jeu.getGrille().getGrille()[i][j].getMinesAdjacentes() !=0.0) {
+						fenetre.getGrille()[i][j].setText(Integer.toString(jeu.getGrille().getGrille()[i][j].getMinesAdjacentes()));
+						fenetre.updateFen();
+					//}
 				}
 			}
 		}
