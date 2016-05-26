@@ -31,14 +31,8 @@ public class ControlButton extends Control implements ActionListener {
 		for(int i = 0; i < this.jeu.getGrille().getHauteur(); i++) {
 			for(int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
 				if(this.fenetre.getGrille()[i][j] == source) {
-					if (!this.jeu.getGrille().getGrille()[i][j].isMine() ) {
-						jeu.devoileCase(i, j);
-					}else {
-
-					}
-
-					fenetre.afficherNbre();
-
+					jeu.devoileCase(i,j);
+					fenetre.updateFen();
 				}
 			}
 		}

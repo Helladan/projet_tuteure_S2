@@ -71,12 +71,24 @@ public class Fenetre extends JFrame {
 	 */
 
 	public void updateFen() {
-		/*int i, j;
-
-		for(j = 0; j < grid.getHauteur(); j++) {
-			for(i = 0; i < grid.getLargeur(); i++)
-				panel.add(grille[j][i]);
-		}*/
+		int i,j;
+		for(i=0;i<grid.getHauteur();i++){
+			for(j=0;j<grid.getLargeur();j++){
+				if(grid.getGrille()[i][j].isDevoilee()){
+					if(grid.getGrille()[i][j].isMine()){
+						editColor(i,j);
+						grille[i][j].setText("Mine");
+					}
+					else{
+						afficheNbre(i,j);
+					}
+				}
+				else if(grid.getGrille()[i][j].isDrapeau()){
+					editColor(i,j);
+					grille[i][j].setText("Drapeau");
+				}
+			}
+		}
 	}
 
 	/**
@@ -230,32 +242,22 @@ public class Fenetre extends JFrame {
 		grille[i][j].setBackground(new Color(67, 67, 67));
 	}
 
-	public void afficherNbre(){
+	public void afficheNbre(int i, int j){
 		// Ecrit sur les cases le nombre de mines adjacentes
-		for(int i = 0; i < this.jeu.getGrille().getHauteur(); i++) {
-			for(int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
-				if (this.jeu.getGrille().getGrille()[i][j].isDevoilee()) {
-					editColor(i,j);
-					if (jeu.getGrille().getGrille()[i][j].getMinesAdjacentes() !=0.0) {
-						if (jeu.getGrille().getGrille()[i][j].getMinesAdjacentes() ==1.0) {
-							getGrille()[i][j].setText(Integer.toString(jeu.getGrille().getGrille()[i][j].getMinesAdjacentes()));
-							grille[i][j].setForeground(new Color(255, 255, 255));
-						}
-						if (jeu.getGrille().getGrille()[i][j].getMinesAdjacentes() ==2.0) {
-							getGrille()[i][j].setText(Integer.toString(jeu.getGrille().getGrille()[i][j].getMinesAdjacentes()));
-							grille[i][j].setForeground(new Color(0, 147, 255));
-						}
-						if (jeu.getGrille().getGrille()[i][j].getMinesAdjacentes() ==3.0) {
-							getGrille()[i][j].setText(Integer.toString(jeu.getGrille().getGrille()[i][j].getMinesAdjacentes()));
-							grille[i][j].setForeground(new Color(209, 7, 0));
-						}
-						if (jeu.getGrille().getGrille()[i][j].getMinesAdjacentes() ==4.0) {
-							getGrille()[i][j].setText(Integer.toString(jeu.getGrille().getGrille()[i][j].getMinesAdjacentes()));
-							grille[i][j].setForeground(new Color(0,0, 0));
-						}
-					updateFen();
-					}
-				}
+		editColor(i,j);
+		if (jeu.getGrille().getGrille()[i][j].getMinesAdjacentes() !=0.0) {
+			grille[i][j].setText(Integer.toString(grid.getGrille()[i][j].getMinesAdjacentes()));
+			editColor(i,j);
+			switch(jeu.getGrille().getGrille()[i][j].getMinesAdjacentes()){
+				case 1:
+					grille[i][j].setForeground(new Color(0, 147, 255));
+					break;
+				case 2:
+					grille[i][j].setForeground(new Color(0, 255, 0));
+					break;
+				default:
+					grille[i][j].setForeground(new Color(209, 7, 0));
+					break;
 			}
 		}
 	}
