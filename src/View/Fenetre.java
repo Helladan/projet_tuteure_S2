@@ -131,6 +131,7 @@ public class Fenetre extends JFrame {
 		for(i = 0; i < h; i++) {
 			for(j = 0; j < l; j++) {
 				grille[i][j] = new JButton();
+				grille[i][j].setBackground(new Color(45, 45, 45));
 				panelGrille.add(grille[i][j]);
 			}
 		}
