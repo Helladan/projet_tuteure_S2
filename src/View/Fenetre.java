@@ -71,7 +71,6 @@ public class Fenetre extends JFrame {
 	 */
 
 	public void updateFen() {
-		chrono.setText(Float.toString(jeu.getTime().getTemps()));
 		int i,j;
 		for(i=0;i<grid.getHauteur();i++){
 			for(j=0;j<grid.getLargeur();j++){
@@ -92,6 +91,8 @@ public class Fenetre extends JFrame {
 				}
 			}
 		}
+		if(jeu.getGrille().isPerdue())perdu();
+		if(jeu.getGrille().isGagnee())gagne();
 	}
 
 	/**
@@ -104,7 +105,7 @@ public class Fenetre extends JFrame {
 				.X_AXIS));
 		Timer t=new Timer(1000,new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				updateFen();
+				chrono.setText(Float.toString(jeu.getTime().getTemps()));
 			}
 		});
 		t.start();
@@ -253,5 +254,29 @@ public class Fenetre extends JFrame {
 					break;
 			}
 		}
+	}
+
+	/**
+	 * Gère l'affichage lorsque la partie est gagnee.
+	 */
+	public void gagne(){
+		JOptionPane optionPaneGagne = new JOptionPane();
+		optionPaneGagne.showMessageDialog( this, "Bravo t'as gagné !\n" +
+						"T'es content ?", "Gagne",
+				JOptionPane.INFORMATION_MESSAGE );
+
+		JDialog dialogGagne = optionPaneGagne.createDialog(this,"");
+	}
+
+	/**
+	 * Gère l'affichage lorsque la partie est perdue.
+	 */
+	public void perdu(){
+		JOptionPane optionPanePerdu = new JOptionPane();
+		optionPanePerdu.showMessageDialog( this, "T'as perdu, t'es une " +
+				"kak PD", "Tu pues la mort",
+				JOptionPane.ERROR_MESSAGE );
+
+		JDialog dialogPerdu = optionPanePerdu.createDialog(this,"");
 	}
 }

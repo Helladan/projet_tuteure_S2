@@ -47,13 +47,13 @@ public class Jeu {
 	 * @param larg    La position en x de la case a dévoiler.
 	 */
 	public void devoileCase(int hauteur, int larg) {
-		gestionChrono();
 		grille.getGrille()[hauteur][larg].setAsDevoilee();
 		grille.incrementeCasesDevoilees();
 		if(grille.getGrille()[hauteur][larg].isMine()) grille.setGrillePerdue();
 		if(grille.getGrille()[hauteur][larg].getMinesAdjacentes() ==
 				0)devoileAuto
 				(hauteur, larg);
+		gestionChrono();
 	}
 
 	/**

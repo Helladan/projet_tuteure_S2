@@ -29,7 +29,8 @@ public class ControlButton extends Control implements MouseListener {
 
 		// A partir des coordonnées du clic, dévoile la case et celles adjacentes
 		//clic gauche
-		if (source2 == MouseEvent.BUTTON1) {
+		if (source2 == MouseEvent.BUTTON1 && !(jeu.getGrille().isPerdue() ||
+				jeu.getGrille().isGagnee())) {
 			for (int i = 0; i < this.jeu.getGrille().getHauteur(); i++) {
 				for (int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
 					if (this.fenetre.getGrille()[i][j] == source && !this.jeu.getGrille().getGrille()[i][j].isDrapeau()) {
@@ -39,7 +40,8 @@ public class ControlButton extends Control implements MouseListener {
 				}
 			}
 			// clic droit
-		}else if (source2 == MouseEvent.BUTTON3){
+		}else if (source2 == MouseEvent.BUTTON3 && !(jeu.getGrille().isPerdue() ||
+				jeu.getGrille().isGagnee())){
 			for (int i = 0; i < this.jeu.getGrille().getHauteur(); i++) {
 				for (int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
 					if (this.fenetre.getGrille()[i][j] == source) {
