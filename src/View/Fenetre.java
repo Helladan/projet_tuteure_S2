@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 
 /**
  * @author Nassime
@@ -185,7 +186,7 @@ public class Fenetre extends JFrame {
 	 * @param al
 	 */
 
-	public void setControlButton(ActionListener al) {
+	public void setControlButton(MouseListener al) {
 
 		int h, l, i, j;
 
@@ -205,7 +206,7 @@ public class Fenetre extends JFrame {
 
 		for(i = 0; i < h; i++) {
 			for(j = 0; j < l; j++) {
-				grille[i][j].addActionListener(al);
+				grille[i][j].addMouseListener(al);
 			}
 		}
 
