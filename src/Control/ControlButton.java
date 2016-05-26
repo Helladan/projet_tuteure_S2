@@ -27,14 +27,14 @@ public class ControlButton extends Control implements ActionListener {
 		for(int i = 0; i < this.jeu.getGrille().getHauteur(); i++) {
 			for(int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
 				if(this.fenetre.getGrille()[i][j] == source) {
+					System.out.println("Clic sur case");
 					jeu.devoileCase(i, j);
-					System.out.print("Clic sur case");
 				}
 			}
 		}
 		for(int i = 0; i < this.jeu.getGrille().getHauteur(); i++) {
 			for(int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
-				if (this.jeu.getGrille().getGrille()[i][j].isMine()) {
+				if (! this.jeu.getGrille().getGrille()[i][j].isMine()) {
 					fenetre.editColor(i,j);
 					fenetre.updateFen();
 					System.out.print("-------------------------------------");
