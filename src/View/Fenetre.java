@@ -235,10 +235,10 @@ public class Fenetre extends JFrame {
 			for(int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
 				if (this.jeu.getGrille().getGrille()[i][j].isDevoilee()) {
 					editColor(i,j);
-					//if (jeu.getGrille().getGrille()[i][j].getMinesAdjacentes() !=0.0) {
+					if (jeu.getGrille().getGrille()[i][j].getMinesAdjacentes() !=0.0) {
 					getGrille()[i][j].setText(Integer.toString(jeu.getGrille().getGrille()[i][j].getMinesAdjacentes()));
 					updateFen();
-					//}
+					}
 				}
 			}
 		}
