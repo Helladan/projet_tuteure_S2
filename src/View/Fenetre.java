@@ -85,8 +85,10 @@ public class Fenetre extends JFrame {
 					}
 				}
 				else if(grid.getGrille()[i][j].isDrapeau()){
-					editColor(i,j);
 					grille[i][j].setText("Drapeau");
+				}
+				else{
+					grille[i][j].setText("");
 				}
 			}
 		}

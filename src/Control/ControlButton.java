@@ -22,32 +22,6 @@ public class ControlButton extends Control implements MouseListener {
 	 *
 	 * @param e
 	 */
-
-	/*public void actionPerformed(ActionEvent e) {
-		Object source = e.getSource();
-
-		fenetre.timer.start();
-
-		// A partir des coordonnées du clic, dévoile la case et celles adjacentes
-
-		for(int i = 0; i < this.jeu.getGrille().getHauteur(); i++) {
-			for(int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
-				if(this.fenetre.getGrille()[i][j] == source) {
-					if (!this.jeu.getGrille().getGrille()[i][j].isMine() ) {
-						jeu.devoileCase(i, j);
-					}else {
-
-					}
-
-					fenetre.afficherNbre();
-
-				}
-			}
-		}
-
-	}*/
-
-
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		Object source = e.getSource();
@@ -61,15 +35,8 @@ public class ControlButton extends Control implements MouseListener {
 			for (int i = 0; i < this.jeu.getGrille().getHauteur(); i++) {
 				for (int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
 					if (this.fenetre.getGrille()[i][j] == source) {
-						if (!this.jeu.getGrille().getGrille()[i][j].isMine()) {
-							jeu.devoileCase(i, j);
-							fenetre.updateFen();
-						} else {
-
-						}
-
-						fenetre.afficheNbre(i,j);
-
+						jeu.devoileCase(i, j);
+						fenetre.updateFen();
 					}
 				}
 			}
@@ -78,7 +45,7 @@ public class ControlButton extends Control implements MouseListener {
 			for (int i = 0; i < this.jeu.getGrille().getHauteur(); i++) {
 				for (int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
 					if (this.fenetre.getGrille()[i][j] == source) {
-						if (! this.jeu.getGrille().getGrille()[i][j].isDrapeau()){
+						if (!this.jeu.getGrille().getGrille()[i][j].isDrapeau()){
 							this.jeu.poserDrapeau(i,j);
 						}else{
 							this.jeu.retirerDrapeau(i,j);
