@@ -58,8 +58,6 @@ public class Fenetre extends JFrame {
 	 */
 
 	public void initAttribut() {
-
-		jeu = new Jeu();
 		mItemNouvellePartie = new JMenuItem("Nouvelle partie");
 		mItemScores = new JMenuItem("Scores");
 		mItemQuitter = new JMenuItem("Quitter");
