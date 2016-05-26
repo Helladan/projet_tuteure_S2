@@ -226,7 +226,7 @@ public class Fenetre extends JFrame {
 	}
 
 	public void editColor(int i, int j){
-		grille[i][j].setBackground(Color.LIGHT_GRAY);
+		grille[i][j].setBackground(new Color(67, 67, 67));
 	}
 
 	public void afficherNbre(){
@@ -236,7 +236,22 @@ public class Fenetre extends JFrame {
 				if (this.jeu.getGrille().getGrille()[i][j].isDevoilee()) {
 					editColor(i,j);
 					if (jeu.getGrille().getGrille()[i][j].getMinesAdjacentes() !=0.0) {
-					getGrille()[i][j].setText(Integer.toString(jeu.getGrille().getGrille()[i][j].getMinesAdjacentes()));
+						if (jeu.getGrille().getGrille()[i][j].getMinesAdjacentes() ==1.0) {
+							getGrille()[i][j].setText(Integer.toString(jeu.getGrille().getGrille()[i][j].getMinesAdjacentes()));
+							grille[i][j].setForeground(new Color(255, 255, 255));
+						}
+						if (jeu.getGrille().getGrille()[i][j].getMinesAdjacentes() ==2.0) {
+							getGrille()[i][j].setText(Integer.toString(jeu.getGrille().getGrille()[i][j].getMinesAdjacentes()));
+							grille[i][j].setForeground(new Color(0, 147, 255));
+						}
+						if (jeu.getGrille().getGrille()[i][j].getMinesAdjacentes() ==3.0) {
+							getGrille()[i][j].setText(Integer.toString(jeu.getGrille().getGrille()[i][j].getMinesAdjacentes()));
+							grille[i][j].setForeground(new Color(209, 7, 0));
+						}
+						if (jeu.getGrille().getGrille()[i][j].getMinesAdjacentes() ==4.0) {
+							getGrille()[i][j].setText(Integer.toString(jeu.getGrille().getGrille()[i][j].getMinesAdjacentes()));
+							grille[i][j].setForeground(new Color(0,0, 0));
+						}
 					updateFen();
 					}
 				}
