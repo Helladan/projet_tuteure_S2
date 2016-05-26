@@ -25,7 +25,6 @@ public class Fenetre extends JFrame {
 	protected JLabel chrono;
 	protected JButton[][] grille;
 	protected JPanel panel;
-	public Timer timer;
 	protected double compteur1,compteur2;
 	protected Jeu jeu;
 
@@ -72,6 +71,7 @@ public class Fenetre extends JFrame {
 	 */
 
 	public void updateFen() {
+		chrono.setText(Float.toString(jeu.getTime().getTemps()));
 		int i,j;
 		for(i=0;i<grid.getHauteur();i++){
 			for(j=0;j<grid.getLargeur();j++){
@@ -107,6 +107,7 @@ public class Fenetre extends JFrame {
 				updateFen();
 			}
 		});
+		t.start();
 		panelChrono.add(labelTemps);
 		panelChrono.add(chrono);
 		panel.add(panelChrono);
@@ -191,18 +192,7 @@ public class Fenetre extends JFrame {
 	public void setControlButton(MouseListener al) {
 
 		int h, l, i, j;
-
-		timer = new javax.swing.Timer(10, new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				compteur1 = compteur1 + 0.01;
-
-				compteur2 = (double) ((int) (compteur1 * 10)) / 10;
-
-				chrono.setText("" + compteur2);
-			}
-		});
-
+		
 		h = grid.getHauteur();
 		l = grid.getLargeur();
 
