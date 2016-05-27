@@ -44,6 +44,7 @@ public class Chrono {
 				setTemps(getTemps() + 1);
 			}
 		});
+		timer.start();
 	}
 
 	/**

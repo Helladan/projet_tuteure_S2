@@ -44,7 +44,7 @@ public class Fenetre extends JFrame {
 		setContentPane(panel);
 		setMinimumSize(new Dimension(LARGEUR, HAUTEUR));
 		pack();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setTitle("Demineur");
 		setResizable(false);
 		setFocusable(true);
@@ -92,7 +92,7 @@ public class Fenetre extends JFrame {
 		if(jeu.getGrille().isPerdue()) {
 			perdu();
 		}
-		if(jeu.getGrille().isGagnee()) {
+		else if(jeu.getGrille().isGagnee()) {
 			gagne();
 		}
 	}
@@ -106,9 +106,10 @@ public class Fenetre extends JFrame {
 
 		panelChrono.setLayout(new BoxLayout(panelChrono, BoxLayout.X_AXIS));
 
-		Timer t = new Timer(1000, new ActionListener() {
+		Timer t = new Timer(10, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				chrono.setText(Float.toString(jeu.getTime().getTemps()));
+				chrono.setText(Integer.toString((int)jeu.getTime().getTemps()
+				));
 			}
 		});
 		t.start();
@@ -150,7 +151,7 @@ public class Fenetre extends JFrame {
 			for(j = 0; j < l; j++) {
 				grille[i][j] = new JButton();
 				grille[i][j].setBackground(Color.GRAY);
-				System.out.println(grille[i][j].getFont());
+				//System.out.println(grille[i][j].getFont());
 				grille[i][j].setFont(new Font("Dialog", Font.BOLD, 10));
 				grille[i][j].setMargin(new Insets(0,0,0,0));
 				grille[i][j].setPreferredSize(new Dimension(15, 15));
@@ -193,7 +194,7 @@ public class Fenetre extends JFrame {
 	/**
 	 * Ajout d'écouteur sur les JMenuItem
 	 *
-	 * @param al
+	 * @param al Listener du menu
 	 */
 	public void setControlMenu(ActionListener al) {
 		mItemNouvellePartie.addActionListener(al);
@@ -204,7 +205,7 @@ public class Fenetre extends JFrame {
 	/**
 	 * Ajout d'écouteur sur les JButton
 	 *
-	 * @param al
+	 * @param al MouseLister des boutons
 	 */
 	public void setControlButton(MouseListener al) {
 

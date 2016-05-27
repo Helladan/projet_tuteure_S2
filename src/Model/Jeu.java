@@ -58,7 +58,6 @@ public class Jeu {
 		if(grille.getGrille()[hauteur][larg].getMinesAdjacentes() == 0) {
 			devoileAuto(hauteur, larg);
 		}
-
 		gestionChrono();
 	}
 
@@ -70,6 +69,7 @@ public class Jeu {
 	 */
 	public void poserDrapeau(int hauteur, int larg) {
 		grille.getGrille()[hauteur][larg].setDrapeau(true);
+		grille.incrementeNbreDrapeau();
 	}
 
 	/**
@@ -80,6 +80,7 @@ public class Jeu {
 	 */
 	public void retirerDrapeau(int hauteur, int larg) {
 		grille.getGrille()[hauteur][larg].setDrapeau(false);
+		grille.decrementeNbreDrapeau();
 	}
 
 	/**
