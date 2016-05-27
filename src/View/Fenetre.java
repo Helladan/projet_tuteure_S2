@@ -261,8 +261,7 @@ public class Fenetre extends JFrame {
 	 */
 	public void gagne(){
 		JOptionPane optionPaneGagne = new JOptionPane();
-		optionPaneGagne.showMessageDialog( this, "Bravo t'as gagné !\n" +
-						"T'es content ?", "Gagne",
+		optionPaneGagne.showMessageDialog( this, "Bravo tu as gagné !", "Gagné !",
 				JOptionPane.INFORMATION_MESSAGE );
 
 		JDialog dialogGagne = optionPaneGagne.createDialog(this,"");
@@ -273,8 +272,7 @@ public class Fenetre extends JFrame {
 	 */
 	public void perdu(){
 		JOptionPane optionPanePerdu = new JOptionPane();
-		optionPanePerdu.showMessageDialog( this, "T'as perdu, t'es une " +
-				"kak PD", "Tu pues la mort",
+		optionPanePerdu.showMessageDialog( this, "Tu as perdu !", "Perdu !",
 				JOptionPane.ERROR_MESSAGE );
 
 		JDialog dialogPerdu = optionPanePerdu.createDialog(this,"");
