@@ -8,13 +8,14 @@ package Model;
 public class Grille {
 	private final static int LARGEUR_PAR_DEFAUT = 8;
 	private final static int HAUTEUR_PAR_DEFAUT = 8;
-	private final static int NBRE_DE_MINES_PAR_DEFAUT = 10;
+	private final static int NBRE_DE_MINES_PAR_DEFAUT = 4;
 	private final int hauteur;
 	private final int largeur;
 	private final int nombreDeMines;
 	private final int casesVides;
 	private Case grille[][];
 	private int casesDevoilees;
+	private int nbreDrapeau;
 	private boolean grillePerdue;
 
 	/**
@@ -42,6 +43,7 @@ public class Grille {
 		this.placeMines();
 		casesVides = haut*larg - nbreMines;
 		casesDevoilees = 0;
+		nbreDrapeau = 0;
 		grillePerdue = false;
 	}
 
@@ -79,6 +81,18 @@ public class Grille {
 	 */
 	public int getTaille() {
 		return hauteur*largeur;
+	}
+
+	public int getNbreDrapeau() {
+		return nbreDrapeau;
+	}
+
+	public void incrementeNbreDrapeau() {
+		this.nbreDrapeau++;
+	}
+
+	public void decrementeNbreDrapeau() {
+		this.nbreDrapeau--;
 	}
 
 	/**
@@ -198,7 +212,7 @@ public class Grille {
 		for(int y = 0; y < this.hauteur; y++){
 		    for(int x = 0; x < this.largeur; x++){
 			    cpt ++;
-			    System.out.println(cpt);
+			    //System.out.println(cpt);
 			    grille[x][y].setAsDevoilee();
 		    }
 		}
