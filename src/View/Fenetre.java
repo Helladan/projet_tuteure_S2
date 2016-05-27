@@ -106,7 +106,7 @@ public class Fenetre extends JFrame {
 
 		panelChrono.setLayout(new BoxLayout(panelChrono, BoxLayout.X_AXIS));
 
-		Timer t = new Timer(1000, new ActionListener() {
+		Timer t = new Timer(10, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chrono.setText(Float.toString(jeu.getTime().getTemps()));
 			}
