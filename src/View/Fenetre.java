@@ -76,14 +76,14 @@ public class Fenetre extends JFrame {
 				if(grid.getGrille()[i][j].isDevoilee()) {
 					if(grid.getGrille()[i][j].isMine()) {
 						editColor(i, j);
-						grille[i][j].setText("M");
+						grille[i][j].setIcon(new ImageIcon("src/bomb.png"));
 					}
 					else {
 						afficheNbre(i, j);
 					}
 				}
 				else if(grid.getGrille()[i][j].isDrapeau()) {
-					grille[i][j].setText("X");
+					grille[i][j].setIcon(new ImageIcon("src/flag.png"));
 				}
 				else {
 					grille[i][j].setText("");
@@ -153,7 +153,7 @@ public class Fenetre extends JFrame {
 				grille[i][j].setPreferredSize(new Dimension(20,20));
 				grille[i][j].setBackground(Color.GRAY);
 				//System.out.println(grille[i][j].getFont());
-				grille[i][j].setFont(new Font("Dialog", Font.BOLD, 10));
+				grille[i][j].setFont(new Font("Dialog", Font.BOLD, 15));
 				grille[i][j].setMargin(new Insets(0,0,0,0));
 				grille[i][j].setPreferredSize(new Dimension(30, 30));
 
