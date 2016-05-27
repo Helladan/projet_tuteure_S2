@@ -226,8 +226,8 @@ public class Fenetre extends JFrame {
 	 */
 	public void restart() {
 		getContentPane().removeAll();
-
 		creerGrille();
+		//setControlButton();
 		pack();
 	}
 

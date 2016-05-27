@@ -135,4 +135,14 @@ public class Jeu {
 	public Grille getGrille() {
 		return grille;
 	}
+
+
+
+	public void nouvellePartie(){
+		grille = new Grille();
+		time = new Chrono();
+		time.start();
+	}
 }
+
+

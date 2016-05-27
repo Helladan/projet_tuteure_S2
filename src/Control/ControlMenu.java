@@ -1,5 +1,6 @@
 package Control;
 
+import Model.Jeu;
 import View.*;
 
 import java.awt.event.*;
@@ -10,12 +11,12 @@ import java.awt.event.*;
 
 public class ControlMenu extends Control implements ActionListener {
 	Fenetre fenetre;
+	Jeu jeu;
 
 
-	/* @contributor : Raphael-R-R */
-
-	public ControlMenu(Fenetre fenetre) {
+	public ControlMenu(Jeu j, Fenetre fenetre) {
 		this.fenetre = fenetre;
+		jeu = j;
 		this.fenetre.setControlMenu(this);
 	}
 
@@ -24,7 +25,6 @@ public class ControlMenu extends Control implements ActionListener {
 	 *
 	 * @param e
 	 *
-	 * @contributor : Raphael-R-R
 	 */
 
 	public void actionPerformed(ActionEvent e) {
@@ -33,6 +33,7 @@ public class ControlMenu extends Control implements ActionListener {
 		System.out.println("Click sur menu");
 
 		if(source.equals(fenetre.getmItemNouvellePartie())) {
+			//jeu.nouvellePartie();
 			fenetre.restart();
 		}
 		else if(source.equals(fenetre.getmItemScores())) {

@@ -17,7 +17,7 @@ public class ControlGroup {
 		fenetre = new Fenetre(jeu);
 
 		controlButton = new ControlButton(jeu, fenetre);
-		controlMenu = new ControlMenu(fenetre);
+		controlMenu = new ControlMenu(jeu, fenetre);
 		fenetre.setVisible(true);
 	}
 }
