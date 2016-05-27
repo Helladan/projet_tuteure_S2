@@ -42,7 +42,8 @@ public class Fenetre extends JFrame {
 		creerChrono();
 		creerGrille();
 		setContentPane(panel);
-		setSize(LARGEUR, HAUTEUR);
+		setMinimumSize(new Dimension(LARGEUR, HAUTEUR));
+		pack();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Demineur");
 		setResizable(false);
