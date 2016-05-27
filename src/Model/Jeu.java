@@ -52,6 +52,7 @@ public class Jeu {
 
 		if(grille.getGrille()[hauteur][larg].isMine()) {
 			grille.setGrillePerdue();
+			grille.toutDevoiler();
 		}
 
 		if(grille.getGrille()[hauteur][larg].getMinesAdjacentes() == 0) {

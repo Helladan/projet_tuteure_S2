@@ -189,4 +189,18 @@ public class Grille {
 	public Case[][] getGrille() {
 		return grille;
 	}
+
+	/**
+	 * Dévoile toute la grille
+	 */
+	public void toutDevoiler(){
+		int cpt = 0;
+		for(int y = 0; y < this.hauteur; y++){
+		    for(int x = 0; x < this.largeur; x++){
+			    cpt ++;
+			    System.out.println(cpt);
+			    grille[x][y].setAsDevoilee();
+		    }
+		}
+	}
 }
