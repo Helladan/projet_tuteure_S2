@@ -108,7 +108,8 @@ public class Fenetre extends JFrame {
 
 		Timer t = new Timer(10, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				chrono.setText(Float.toString(jeu.getTime().getTemps()));
+				chrono.setText(Integer.toString((int)jeu.getTime().getTemps()
+				));
 			}
 		});
 		t.start();
