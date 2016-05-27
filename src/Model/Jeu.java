@@ -3,8 +3,6 @@ package Model;
 /**
  * Classe du jeu. Représente le modèle, fais le lien entre les classe Chrono,
  * Grille et Case. Chaque instance est une nouvelle partie.
- *
- * @author Tarek
  */
 public class Jeu {
 	private Chrono time;
@@ -36,7 +34,9 @@ public class Jeu {
 	 * Méthode permettant d'arreter le chrono si la partie est gagnée ou perdue.
 	 */
 	private void gestionChrono() {
-		if(grille.isPerdue() || grille.isGagnee()) time.stop();
+		if(grille.isPerdue() || grille.isGagnee()) {
+			time.stop();
+		}
 	}
 
 	/**
@@ -49,10 +49,15 @@ public class Jeu {
 	public void devoileCase(int hauteur, int larg) {
 		grille.getGrille()[hauteur][larg].setAsDevoilee();
 		grille.incrementeCasesDevoilees();
-		if(grille.getGrille()[hauteur][larg].isMine()) grille.setGrillePerdue();
-		if(grille.getGrille()[hauteur][larg].getMinesAdjacentes() ==
-				0)devoileAuto
-				(hauteur, larg);
+
+		if(grille.getGrille()[hauteur][larg].isMine()) {
+			grille.setGrillePerdue();
+		}
+
+		if(grille.getGrille()[hauteur][larg].getMinesAdjacentes() == 0) {
+			devoileAuto(hauteur, larg);
+		}
+
 		gestionChrono();
 	}
 
@@ -84,25 +89,48 @@ public class Jeu {
 	 * @param larg    Pos x de la case a tester.
 	 */
 	private void devoileAuto(int hauteur, int larg) {
-		int i,j,h,l;
-		for(i=-1;i<2;i++){
-			h = hauteur+i;
-			if(h<0 || h>=grille.getHauteur())continue;
-			for(j=-1;j<2;j++){
-				if(i == 0 && j == 0)continue;
-				l = larg+j;
-				if(l<0 || l>=grille.getLargeur())continue;
-				if(!grille.getGrille()[h][l].isMine() &&  !grille.getGrille
-						()[h][l].isDevoilee())
+		int i, j, h, l;
+
+		for(i = -1; i < 2; i++) {
+			h = hauteur + i;
+
+			// Si les coordonnées testées sont en dehors de la grille, on passe
+			if(h < 0 || h >= grille.getHauteur()) {
+				continue;
+			}
+
+			for(j = -1; j < 2; j++) {
+				// Si les coordonnées testées sont la case dévoilée elle même, on passe
+				if(i == 0 && j == 0) {
+					continue;
+				}
+
+				l = larg + j;
+
+				// Si les coordonnées testées sont en dehors de la grille, on passe
+				if(l < 0 || l >= grille.getLargeur()) {
+					continue;
+				}
+
+				if(!grille.getGrille()[h][l].isMine() &&
+						!grille.getGrille()[h][l].isDevoilee()) {
 					devoileCase(h, l);
+				}
 			}
 		}
 	}
 
+
+	/**
+	 * @return l'atribut time de la classe
+	 */
 	public Chrono getTime() {
 		return time;
 	}
 
+	/**
+	 * @return l'attribut grille de la classe
+	 */
 	public Grille getGrille() {
 		return grille;
 	}

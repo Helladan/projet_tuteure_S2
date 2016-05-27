@@ -4,6 +4,17 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.sql.*;
 
+
+/**
+ * Classe qui gère la base de données
+ * <p>
+ * TABLE chrono :
+ * id INTEGER PRIMARY KEY AUTOINCREMENT // Clé primaire
+ * taille TEXT NOT NULL                 // Taille de la grille (nombre de cases)
+ * difficulte INT NOT NULL              // Difficulté (nombre de mines)
+ * nom CHAR(10)                         // Nom du joueur
+ * temps FLOAT)                         // Temps de la partie
+ */
 public class Database {
 	private Connection c;
 	private Statement stmt;
@@ -39,9 +50,9 @@ public class Database {
 	 * Methode qui crée le fichier de sauvegarde au besoin
 	 */
 	private void creationSauvegarde() {
-		// On test si la sauvegarde existe
 		System.out.println("Recherche de la sauvegarde...");
 
+		// On test si la sauvegarde existe
 		try {
 			new BufferedReader(new FileReader("scores.db"));
 			System.out.println("Fichier de sauvegarde trouvé");
@@ -54,11 +65,11 @@ public class Database {
 
 				stmt = c.createStatement();
 				String sql = "CREATE TABLE chrono (" +
-						"id INTEGER PRIMARY KEY AUTOINCREMENT , " +
-						"taille TEXT NOT NULL, " +
-						"difficulte INT NOT NULL, " +
-						"nom CHAR(10), " +
-						"temps FLOAT)";
+						"id INTEGER PRIMARY KEY AUTOINCREMENT , " + // Clé primaire
+						"taille TEXT NOT NULL, " +                  // Taille de la grille (nombre de cases)
+						"difficulte INT NOT NULL, " +               // Difficulté (nombre de mines)
+						"nom CHAR(10), " +                          // Nom du joueur
+						"temps FLOAT)";                             // Temps de la partie
 				stmt.executeUpdate(sql);
 				stmt.close();
 				c.close();
@@ -87,11 +98,13 @@ public class Database {
 			c.setAutoCommit(false);
 
 			stmt = c.createStatement();
-			String sql = "INSERT INTO chrono (taille, " +
+			String sql = "INSERT INTO chrono (" +
+					"taille, " +
 					"difficulte, " +
 					"nom, " +
 					"temps) " +
-					"VALUES (" + tailleGrille + ", " +
+					"VALUES (" +
+					tailleGrille + ", " +
 					difficulte + ", " +
 					"'" + nom + "', " +
 					temps + ");";

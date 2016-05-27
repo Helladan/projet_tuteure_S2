@@ -68,7 +68,6 @@ public class Grille {
 	 *
 	 * @return Le nombre de mines présents dans la grille (int).
 	 */
-
 	public int getNombreDeMines() {
 		return nombreDeMines;
 	}
@@ -76,11 +75,10 @@ public class Grille {
 	/**
 	 * Retourne la taille de la grille.
 	 *
-	 * @author : Raphael-R-R
+	 * @return retourne le nombre de cases de la grille
 	 */
-
 	public int getTaille() {
-		return getHauteur()*getHauteur();
+		return hauteur*largeur;
 	}
 
 	/**
@@ -88,7 +86,9 @@ public class Grille {
 	 */
 	private void newGrille() {
 		int i, j;
+
 		grille = new Case[hauteur][largeur];
+
 		for(i = 0; i < hauteur; i++) {
 			for(j = 0; j < largeur; j++) {
 				grille[i][j] = new Case(i, j);
@@ -103,29 +103,44 @@ public class Grille {
 		int i, j;
 		double probMine = (double) nombreDeMines/(hauteur*largeur);
 		int minesAPlace = nombreDeMines;
-		while(minesAPlace>0) {
-			for (i = 0; i < hauteur; i++) {
-				for (j = 0; j < largeur; j++) {
-					if (minesAPlace != 0) {
-						if (Math.random() <= probMine) {
+
+		// Tant qu'il reste des mines à placer
+		while(minesAPlace > 0) {
+			for(i = 0; i < hauteur; i++) {
+				for(j = 0; j < largeur; j++) {
+					if(minesAPlace != 0) {
+						// On fait un rand en rapport avec la probabilité de placement d'une mine
+						if(Math.random() <= probMine) {
+							// Si ça passe, on met une mine dans la case
 							grille[i][j].setAsMine();
+							// Et on réduit le nombre de mines à placer
 							minesAPlace--;
-							if (i != 0 && j != 0)
+
+							// on incrémente le nombre de mines adjacente des huit cases autour
+							if(i != 0 && j != 0) {
 								grille[i - 1][j - 1].incrementeMinesAdjacentes();
-							if (i != 0)
+							}
+							if(i != 0) {
 								grille[i - 1][j].incrementeMinesAdjacentes();
-							if (i != 0 && j != largeur - 1)
+							}
+							if(i != 0 && j != largeur - 1) {
 								grille[i - 1][j + 1].incrementeMinesAdjacentes();
-							if (j != largeur - 1)
+							}
+							if(j != largeur - 1) {
 								grille[i][j + 1].incrementeMinesAdjacentes();
-							if (i != hauteur - 1 && j != largeur - 1)
+							}
+							if(i != hauteur - 1 && j != largeur - 1) {
 								grille[i + 1][j + 1].incrementeMinesAdjacentes();
-							if (i != hauteur - 1)
+							}
+							if(i != hauteur - 1) {
 								grille[i + 1][j].incrementeMinesAdjacentes();
-							if (i != hauteur - 1 && j != 0)
+							}
+							if(i != hauteur - 1 && j != 0) {
 								grille[i + 1][j - 1].incrementeMinesAdjacentes();
-							if (j != 0)
+							}
+							if(j != 0) {
 								grille[i][j - 1].incrementeMinesAdjacentes();
+							}
 						}
 					}
 				}
