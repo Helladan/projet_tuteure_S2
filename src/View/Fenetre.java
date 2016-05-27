@@ -152,7 +152,8 @@ public class Fenetre extends JFrame {
 				grille[i][j].setBackground(Color.GRAY);
 				System.out.println(grille[i][j].getFont());
 				grille[i][j].setFont(new Font("Dialog", Font.BOLD, 10));
-				grille[i][j].setMargin(new Insets(1,1,1,1));
+				grille[i][j].setMargin(new Insets(0,0,0,0));
+				grille[i][j].setPreferredSize(new Dimension(15, 15));
 
 				panelGrille.add(grille[i][j]);
 			}
