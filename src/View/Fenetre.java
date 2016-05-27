@@ -3,6 +3,7 @@ package View;
 import Model.*;
 
 import javax.swing.*;
+import javax.swing.text.Style;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -73,7 +74,7 @@ public class Fenetre extends JFrame {
 				if(grid.getGrille()[i][j].isDevoilee()) {
 					if(grid.getGrille()[i][j].isMine()) {
 						editColor(i, j);
-						grille[i][j].setText("Mine");
+						grille[i][j].setText("M");
 					}
 					else {
 						afficheNbre(i, j);
@@ -148,6 +149,9 @@ public class Fenetre extends JFrame {
 			for(j = 0; j < l; j++) {
 				grille[i][j] = new JButton();
 				grille[i][j].setBackground(Color.GRAY);
+				System.out.println(grille[i][j].getFont());
+				grille[i][j].setFont(new Font("Dialog", Font.BOLD, 10));
+				grille[i][j].setMargin(new Insets(1,1,1,1));
 
 				panelGrille.add(grille[i][j]);
 			}
