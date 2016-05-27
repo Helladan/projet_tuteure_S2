@@ -1,5 +1,6 @@
 package View;
 
+import Control.ControlGroup;
 import Model.*;
 
 import javax.swing.*;
@@ -44,7 +45,7 @@ public class Fenetre extends JFrame {
 		setContentPane(panel);
 		setMinimumSize(new Dimension(LARGEUR, HAUTEUR));
 		pack();
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setTitle("Demineur");
 		setResizable(false);
 		setFocusable(true);
@@ -149,6 +150,7 @@ public class Fenetre extends JFrame {
 		for(i = 0; i < h; i++) {
 			for(j = 0; j < l; j++) {
 				grille[i][j] = new JButton();
+				grille[i][j].setPreferredSize(new Dimension(20,20));
 				grille[i][j].setBackground(Color.GRAY);
 				//System.out.println(grille[i][j].getFont());
 				grille[i][j].setFont(new Font("Dialog", Font.BOLD, 10));
@@ -225,10 +227,10 @@ public class Fenetre extends JFrame {
 	 * Affichage d'une nouvelle grille lors du clique sur mItemNouvellePartie
 	 */
 	public void restart() {
-		getContentPane().removeAll();
-		creerGrille();
-		//setControlButton();
-		pack();
+		this.dispose();
+		Jeu j = new Jeu();
+		ControlGroup gp = new ControlGroup(j);
+		this.setVisible(true);
 	}
 
 	/**
