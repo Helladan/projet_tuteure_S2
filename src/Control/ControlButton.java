@@ -1,10 +1,10 @@
 package Control;
 
+import Model.Grille;
 import Model.Jeu;
 import View.Fenetre;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -21,6 +21,7 @@ public class ControlButton extends Control implements MouseListener {
 	 * Traitement des boutons
 	 *
 	 * @param e
+	 * @contributor : Raphael-R-R
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -31,9 +32,12 @@ public class ControlButton extends Control implements MouseListener {
 		//clic gauche
 		if (source2 == MouseEvent.BUTTON1 && !(jeu.getGrille().isPerdue() ||
 				jeu.getGrille().isGagnee())) {
-			for (int i = 0; i < this.jeu.getGrille().getHauteur(); i++) {
-				for (int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
-					if (this.fenetre.getGrille()[i][j] == source && !this.jeu.getGrille().getGrille()[i][j].isDrapeau()) {
+
+			int hauteur = jeu.getGrille().getHauteur(), largeur = jeu.getGrille().getLargeur();
+
+			for (int i = 0; i < hauteur; i++) {
+				for (int j = 0; j < largeur; j++) {
+					if (fenetre.getGrille()[i][j].equals(source) && !jeu.getGrille().getGrille()[i][j].isDrapeau()) {
 						jeu.devoileCase(i, j);
 						fenetre.updateFen();
 					}
@@ -42,13 +46,16 @@ public class ControlButton extends Control implements MouseListener {
 			// clic droit
 		}else if (source2 == MouseEvent.BUTTON3 && !(jeu.getGrille().isPerdue() ||
 				jeu.getGrille().isGagnee())){
-			for (int i = 0; i < this.jeu.getGrille().getHauteur(); i++) {
-				for (int j = 0; j < this.jeu.getGrille().getLargeur(); j++) {
-					if (this.fenetre.getGrille()[i][j] == source) {
-						if (!this.jeu.getGrille().getGrille()[i][j].isDrapeau()){
-							this.jeu.poserDrapeau(i,j);
+
+			int hauteur = jeu.getGrille().getHauteur(), largeur = jeu.getGrille().getLargeur();
+
+			for (int i = 0; i < hauteur; i++) {
+				for (int j = 0; j < largeur; j++) {
+					if (fenetre.getGrille()[i][j].equals(source)) {
+						if (!jeu.getGrille().getGrille()[i][j].isDrapeau()){
+							jeu.poserDrapeau(i,j);
 						}else{
-							this.jeu.retirerDrapeau(i,j);
+							jeu.retirerDrapeau(i,j);
 						}
 						fenetre.updateFen();
 					}

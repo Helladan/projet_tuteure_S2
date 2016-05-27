@@ -12,26 +12,33 @@ public class ControlMenu extends Control implements ActionListener {
 	Fenetre fenetre;
 
 
+	/* @contributor : Raphael-R-R */
+
 	public ControlMenu(Fenetre fenetre) {
 		this.fenetre = fenetre;
-		fenetre.setControlMenu(this);
+		this.fenetre.setControlMenu(this);
 	}
 
 	/**
 	 * Gère le menu en accèdant aux fontions crées dans la fenêtre
 	 *
 	 * @param e
+	 *
+	 * @contributor : Raphael-R-R
 	 */
 
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("test");
-		if(e.getSource() == fenetre.getmItemNouvellePartie()) {
+		Object source = e.getSource();
+
+		System.out.println("Click sur menu");
+
+		if(source.equals(fenetre.getmItemNouvellePartie())) {
 			fenetre.restart();
 		}
-		else if(e.getSource() == fenetre.getmItemScores()) {
+		else if(source.equals(fenetre.getmItemScores())) {
 			fenetre.afficherScores();
 		}
-		else if(e.getSource() == fenetre.getmItemQuitter()) {
+		else if(source.equals(fenetre.getmItemQuitter())) {
 			fenetre.quitter();
 		}
 

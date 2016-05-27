@@ -11,7 +11,6 @@ import View.Fenetre;
 public class Demineur {
 	public static void main(String[] args) {
 		Jeu jeu = new Jeu();
-
 		ControlGroup controlGroup = new ControlGroup(jeu);
 	}
 }
