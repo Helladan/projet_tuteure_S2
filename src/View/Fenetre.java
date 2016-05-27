@@ -148,7 +148,7 @@ public class Fenetre extends JFrame {
 		for(i = 0; i < h; i++) {
 			for(j = 0; j < l; j++) {
 				grille[i][j] = new JButton();
-				grille[i][j].setBackground(new Color(45, 45, 45));
+				grille[i][j].setBackground(Color.GRAY);
 				panelGrille.add(grille[i][j]);
 			}
 		}
@@ -233,7 +233,7 @@ public class Fenetre extends JFrame {
 	}
 
 	public void editColor(int i, int j){
-		grille[i][j].setBackground(new Color(67, 67, 67));
+		grille[i][j].setBackground(Color.LIGHT_GRAY);
 	}
 
 	public void afficheNbre(int i, int j){
@@ -244,13 +244,28 @@ public class Fenetre extends JFrame {
 			editColor(i,j);
 			switch(jeu.getGrille().getGrille()[i][j].getMinesAdjacentes()){
 				case 1:
-					grille[i][j].setForeground(new Color(0, 147, 255));
+					grille[i][j].setForeground(Color.BLUE);
 					break;
 				case 2:
-					grille[i][j].setForeground(new Color(0, 255, 0));
+					grille[i][j].setForeground(new Color(49, 141, 64));
+					break;
+				case 3:
+					grille[i][j].setForeground(Color.RED);
+					break;
+				case 4:
+					grille[i][j].setForeground(new Color(42, 78, 117));
+					break;
+				case 5:
+					grille[i][j].setForeground(new Color(178, 124, 66));
+					break;
+				case 6:
+					grille[i][j].setForeground(new Color(135, 178, 42));
+					break;
+				case 7:
+					grille[i][j].setForeground(Color.GRAY);
 					break;
 				default:
-					grille[i][j].setForeground(new Color(209, 7, 0));
+					grille[i][j].setForeground(Color.BLACK);
 					break;
 			}
 		}
