@@ -28,8 +28,8 @@ public class Fenetre extends JFrame {
 	protected JPanel panel;
 	protected Jeu jeu;
 
-	public static final int LARGEUR = 600;
-	public static final int HAUTEUR = 600;
+	public static final int LARGEUR = 0;
+	public static final int HAUTEUR = 0;
 
 	/**
 	 * Constructeur de Fenetre
@@ -155,7 +155,7 @@ public class Fenetre extends JFrame {
 				//System.out.println(grille[i][j].getFont());
 				grille[i][j].setFont(new Font("Dialog", Font.BOLD, 10));
 				grille[i][j].setMargin(new Insets(0,0,0,0));
-				grille[i][j].setPreferredSize(new Dimension(15, 15));
+				grille[i][j].setPreferredSize(new Dimension(30, 30));
 
 				panelGrille.add(grille[i][j]);
 			}

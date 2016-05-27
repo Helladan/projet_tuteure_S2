@@ -5,7 +5,7 @@ package Model;
  * Grille et Case. Chaque instance est une nouvelle partie.
  */
 public class Jeu {
-	private Chrono time;
+	public Chrono time;
 	private Grille grille;
 
 	/**
@@ -14,7 +14,6 @@ public class Jeu {
 	public Jeu() {
 		grille = new Grille();
 		time = new Chrono();
-		time.start();
 	}
 
 	/**
@@ -27,7 +26,6 @@ public class Jeu {
 	public Jeu(int hauteur, int larg, int nbreMines) {
 		grille = new Grille(hauteur, larg, nbreMines);
 		time = new Chrono();
-		time.start();
 	}
 
 	/**
@@ -142,7 +140,6 @@ public class Jeu {
 	public void nouvellePartie(){
 		grille = new Grille();
 		time = new Chrono();
-		time.start();
 	}
 }
 

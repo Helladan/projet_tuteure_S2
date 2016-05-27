@@ -28,6 +28,10 @@ public class ControlButton extends Control implements MouseListener {
 		Object source = e.getSource();
 		int source2 = e.getButton();
 
+		if(jeu.time.getTemps()==0){
+			jeu.time.start();
+		}
+
 		// A partir des coordonnées du clic, dévoile la case et celles adjacentes
 		//clic gauche
 		if (source2 == MouseEvent.BUTTON1 && !(jeu.getGrille().isPerdue() ||

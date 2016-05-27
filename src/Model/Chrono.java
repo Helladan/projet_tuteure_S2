@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Chrono {
-	private float temps, meilleurTemps;
+	public float temps, meilleurTemps;
 	private Timer timer;
 	private Grille grille;
 	private Database database;
