@@ -24,7 +24,6 @@ public class Fenetre extends JFrame {
 	protected JLabel chrono;
 	protected JButton[][] grille;
 	protected JPanel panel;
-	protected double compteur1, compteur2;
 	protected Jeu jeu;
 
 	public static final int LARGEUR = 600;
