@@ -8,7 +8,7 @@ package Model;
 public class Grille {
 	private final static int LARGEUR_PAR_DEFAUT = 8;
 	private final static int HAUTEUR_PAR_DEFAUT = 8;
-	private final static int NBRE_DE_MINES_PAR_DEFAUT = 4;
+	private final static int NBRE_DE_MINES_PAR_DEFAUT = 10;
 	private final int hauteur;
 	private final int largeur;
 	private final int nombreDeMines;

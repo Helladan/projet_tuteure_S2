@@ -38,7 +38,7 @@ public class Chrono {
 	 * Démarre le timer qui permettra de calculer le temps écoulé
 	 */
 	public void start() {
-		timer = new Timer(1000, new ActionListener() {
+		timer = new Timer(100, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent actionEvent) {
 				setTemps(getTemps() + 1);
