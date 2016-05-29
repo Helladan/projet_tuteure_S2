@@ -86,7 +86,7 @@ public class Fenetre extends JFrame {
 					grille[i][j].setIcon(new ImageIcon("src/flag.png"));
 				}
 				else {
-					grille[i][j].setText("");
+					grille[i][j].setIcon(null);
 				}
 			}
 		}
