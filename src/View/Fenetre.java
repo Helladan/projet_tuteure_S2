@@ -230,7 +230,7 @@ public class Fenetre extends JFrame {
 		this.dispose();
 		Jeu j = new Jeu();
 		ControlGroup gp = new ControlGroup(j);
-		this.setVisible(true);
+	//	this.setVisible(true);
 	}
 
 	/**
