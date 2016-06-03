@@ -4,7 +4,6 @@ import Control.ControlGroup;
 import Model.*;
 
 import javax.swing.*;
-import javax.swing.text.Style;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,7 +44,7 @@ public class Fenetre extends JFrame {
 		setContentPane(panel);
 		setMinimumSize(new Dimension(LARGEUR, HAUTEUR));
 		pack();
-		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setTitle("Demineur");
 		setResizable(false);
 		setFocusable(true);
