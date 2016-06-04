@@ -47,7 +47,7 @@ public class Fenetre extends JFrame {
 		setMinimumSize(new Dimension(LARGEUR, HAUTEUR));
 		pack();
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		setTitle("Demineur");
+		setTitle("Déminheur");
 		setResizable(false);
 		setFocusable(true);
 
