@@ -142,7 +142,7 @@ public class Chrono {
 	/* Ajoute le temps actuel à la base de donnée. */
 
 	public void setTempsInDB(String pseudo) {
-		database.insertionScore(grille.getTaille(), 0, pseudo, temps);
+		database.insertionScore(grille.getTaille(), 0, pseudo, temps/10.0);
 	}
 
 	/**
