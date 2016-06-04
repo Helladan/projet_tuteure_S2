@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * @author Nassime
@@ -236,7 +238,34 @@ public class Fenetre extends JFrame {
 	 * Affiche des scores lors du clique sur mItemScores
 	 */
 	public void afficherScores() {
+		JOptionPane scorePan = new JOptionPane();
+		Database database = new Database();
+		ResultSet scores;
 
+		database.recuperationSauvegarde(jeu.getGrille().getTaille(), 0);
+		scores = database.getResultatRequete();
+
+		if(scores != null)
+		{
+			try
+			{
+				int i = 1;
+				String scoreList = "\n";
+
+				while(scores.next()) {
+					scoreList += i + "." + scores.getString("nom") + " " + scores.getDouble("temps") + "\n";
+					i++;
+				}
+
+				scorePan.showMessageDialog(this, "Top 5 scores : " + scoreList, "Scores", JOptionPane.NO_OPTION);
+			} catch (SQLException e)
+			{
+				e.printStackTrace();
+
+			}
+		}
+		else
+			scorePan.showMessageDialog(this, "Aucune donnée de sauvegarde.", "Scores", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	/**
@@ -301,10 +330,10 @@ public class Fenetre extends JFrame {
 	 */
 	public void gagne() {
 		JOptionPane optionPaneGagne = new JOptionPane();
-		optionPaneGagne.showMessageDialog(this, "Bravo tu as gagné !", "Gagné !",
-				JOptionPane.INFORMATION_MESSAGE);
+		String nom = optionPaneGagne.showInputDialog(this, "Bravo tu as gagné ! Entre ton pseudo : ");
 
-		JDialog dialogGagne = optionPaneGagne.createDialog(this, "");
+		if(nom != null)
+			jeu.getTime().setTempsInDB(nom);
 	}
 
 	/**

@@ -13,7 +13,7 @@ public class Jeu {
 	 */
 	public Jeu() {
 		grille = new Grille();
-		time = new Chrono();
+		time = new Chrono(grille);
 	}
 
 	/**

@@ -30,8 +30,6 @@ public class Chrono {
 	public Chrono(Grille grille) {
 		this.database = new Database();
 		this.grille = grille;
-
-		getMeilleurTempsFromDB();
 	}
 
 	/**
@@ -44,6 +42,7 @@ public class Chrono {
 				setTemps(getTemps() + 1);
 			}
 		});
+
 		timer.start();
 	}
 
@@ -89,22 +88,29 @@ public class Chrono {
 
 		ResultSet resultatRequete = database.getResultatRequete();
 
-		try {
-			/**
-			 * D'abord on récupère la ligne actuelle.
-			 * Si meilleurTemps == 0, c'est que meilleurTemps
-			 * n'a pas encore été récupéré, on peut alors
-			 * l'obtenir depuis la base de donnée.
-			 */
-			while(resultatRequete.next() && meilleurTemps == 0) {
-				if(resultatRequete.getInt("taille") == taille) {
-					meilleurTemps = resultatRequete.getFloat("temps");
+		if(resultatRequete != null)
+		{
+			try
+			{
+				/**
+				 * D'abord on récupère la ligne actuelle.
+				 * Si meilleurTemps == 0, c'est que meilleurTemps
+				 * n'a pas encore été récupéré, on peut alors
+				 * l'obtenir depuis la base de donnée.
+				 */
+				while (resultatRequete.next() && meilleurTemps == 0)
+				{
+					if (resultatRequete.getInt("taille") == taille)
+					{
+						meilleurTemps = resultatRequete.getFloat("temps");
+					}
 				}
 			}
-		}
-		catch(SQLException e) {
-			System.out.println("Erreur sur le parcours de resultatRequete dans Chrono.getMeilleurTempsFromDB()");
-			e.printStackTrace();
+			catch (SQLException e)
+			{
+				System.out.println("Erreur sur le parcours de resultatRequete dans Chrono.getMeilleurTempsFromDB()");
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -131,6 +137,12 @@ public class Chrono {
 	 */
 	public void setMeilleurTempsInDB(String pseudo) {
 		database.insertionScore(grille.getTaille(), 0, pseudo, meilleurTemps);
+	}
+
+	/* Ajoute le temps actuel à la base de donnée. */
+
+	public void setTempsInDB(String pseudo) {
+		database.insertionScore(grille.getTaille(), 0, pseudo, temps);
 	}
 
 	/**

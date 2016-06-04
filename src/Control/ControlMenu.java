@@ -30,8 +30,6 @@ public class ControlMenu extends Control implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 
-		System.out.println("Click sur menu");
-
 		if(source.equals(fenetre.getmItemNouvellePartie())) {
 			//jeu.nouvellePartie();
 			fenetre.restart();

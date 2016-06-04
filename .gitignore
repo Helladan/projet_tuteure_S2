@@ -1,3 +1,4 @@
 .gitignore
 .idea
 .projet_tuteure_S2.iml
+scores.db

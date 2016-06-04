@@ -107,7 +107,7 @@ public class Database {
 					tailleGrille + ", " +
 					difficulte + ", " +
 					"'" + nom + "', " +
-					temps + ");";
+					temps + ")";
 			stmt.executeUpdate(sql);
 
 			stmt.close();
@@ -137,12 +137,12 @@ public class Database {
 
 			stmt = c.createStatement();
 
-			req = "SELECT nom, temps" +
-					"FROM chrono" +
+			req = "SELECT nom, temps " +
+					"FROM chrono " +
 					"WHERE taille = " + tailleGrille + " AND " +
 					"difficulte = " + difficulte +
-					"ORDER BY temps ASC " +
-					"LIMIT 0, 5;";
+					" ORDER BY temps ASC " +
+					"LIMIT 0, 5";
 
 			resultatRequete = stmt.executeQuery(req);
 		}
