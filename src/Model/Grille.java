@@ -213,7 +213,7 @@ public class Grille {
 		    for(int x = 0; x < this.largeur; x++){
 			    cpt ++;
 			    //System.out.println(cpt);
-			    grille[x][y].setAsDevoilee();
+			    grille[y][x].setAsDevoilee();
 		    }
 		}
 	}
