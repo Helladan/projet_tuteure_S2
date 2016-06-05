@@ -241,25 +241,32 @@ public class Fenetre extends JFrame {
 		JOptionPane scorePan = new JOptionPane();
 		Database database = new Database();
 		ResultSet scores;
+		boolean haveData = false;
 
 		database.recuperationSauvegarde(jeu.getGrille().getTaille(), 0);
 		scores = database.getResultatRequete();
 
-		if(scores != null)
-		{
-			try
-			{
+		try {
+			if(scores.next())
+				haveData = true;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+		if(scores != null && haveData) {
+			try {
 				int i = 1;
 				String scoreList = "\n";
 
-				while(scores.next()) {
+				do {
 					scoreList += i + "." + scores.getString("nom") + " " + scores.getDouble("temps") + "\n";
 					i++;
-				}
+				} while(scores.next());
 
-				scorePan.showMessageDialog(this, "Top 5 scores : " + scoreList, "Scores", JOptionPane.NO_OPTION);
-			} catch (SQLException e)
-			{
+				scorePan.showMessageDialog(this, "Meilleurs scores : " + scoreList, "Scores", JOptionPane.NO_OPTION);
+			}
+			catch (SQLException e) {
 				e.printStackTrace();
 
 			}

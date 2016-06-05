@@ -68,6 +68,13 @@ public class Chrono {
 	}
 
 	/**
+	 * Retourne la base de donnée
+	 */
+	public Database getDatabase() {
+		return database;
+	}
+
+	/**
 	 * Affecte le temps passé en paramètre au temps actuel
 	 */
 	private void setTemps(float temps) {
