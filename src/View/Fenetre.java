@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -228,7 +229,9 @@ public class Fenetre extends JFrame {
 	 * Affichage d'une nouvelle grille lors du clique sur mItemNouvellePartie
 	 */
 	public void restart() {
+		jeu.getTime().getDatabase().endConnection();
 		this.dispose();
+
 		Jeu j = new Jeu();
 		ControlGroup gp = new ControlGroup(j);
 	//	this.setVisible(true);
@@ -239,7 +242,7 @@ public class Fenetre extends JFrame {
 	 */
 	public void afficherScores() {
 		JOptionPane scorePan = new JOptionPane();
-		Database database = new Database();
+		Database database = jeu.getTime().getDatabase();
 		ResultSet scores;
 		boolean haveData = false;
 
@@ -339,6 +342,8 @@ public class Fenetre extends JFrame {
 		JOptionPane optionPaneGagne = new JOptionPane();
 		String nom = optionPaneGagne.showInputDialog(this, "Bravo tu as gagné ! Entre ton pseudo : ");
 
+		jeu.getTime().getDatabase().endConnection();
+
 		if(nom != null)
 			jeu.getTime().setTempsInDB(nom);
 	}
@@ -350,7 +355,5 @@ public class Fenetre extends JFrame {
 		JOptionPane optionPanePerdu = new JOptionPane();
 		optionPanePerdu.showMessageDialog(this, "Tu as perdu !", "Perdu !",
 				JOptionPane.ERROR_MESSAGE);
-
-		JDialog dialogPerdu = optionPanePerdu.createDialog(this, "");
 	}
 }

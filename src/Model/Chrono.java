@@ -95,26 +95,12 @@ public class Chrono {
 
 		ResultSet resultatRequete = database.getResultatRequete();
 
-		if(resultatRequete != null)
-		{
-			try
-			{
-				/**
-				 * D'abord on récupère la ligne actuelle.
-				 * Si meilleurTemps == 0, c'est que meilleurTemps
-				 * n'a pas encore été récupéré, on peut alors
-				 * l'obtenir depuis la base de donnée.
-				 */
-				while (resultatRequete.next() && meilleurTemps == 0)
-				{
-					if (resultatRequete.getInt("taille") == taille)
-					{
-						meilleurTemps = resultatRequete.getFloat("temps");
-					}
-				}
+		if(resultatRequete != null) {
+			try {
+				resultatRequete.next();
+				meilleurTemps = resultatRequete.getFloat("temps");
 			}
-			catch (SQLException e)
-			{
+			catch (SQLException e) {
 				System.out.println("Erreur sur le parcours de resultatRequete dans Chrono.getMeilleurTempsFromDB()");
 				e.printStackTrace();
 			}
@@ -128,35 +114,14 @@ public class Chrono {
 	 * @param pseudo : Le pseudo du joueur.
 	 */
 	public void setMeilleurTemps(String pseudo) {
-		if(isMeilleurTemps()) {
+		if(temps < meilleurTemps) {
 			meilleurTemps = temps;
-
-			setMeilleurTempsInDB(pseudo);
 		}
-	}
-
-	/**
-	 * Ajoute le meilleur temps à la base de donnée
-	 * <p>
-	 * TODO : Gestion de la difficultée
-	 *
-	 * @param pseudo : Le pseudo du joueur
-	 */
-	public void setMeilleurTempsInDB(String pseudo) {
-		database.insertionScore(grille.getTaille(), 0, pseudo, meilleurTemps);
 	}
 
 	/* Ajoute le temps actuel à la base de donnée. */
 
 	public void setTempsInDB(String pseudo) {
 		database.insertionScore(grille.getTaille(), 0, pseudo, temps/10.0);
-	}
-
-	/**
-	 * Renvoie vrai si le temps actuel est le meilleur temps,
-	 * sinon faux
-	 */
-	private boolean isMeilleurTemps() {
-		return (temps < meilleurTemps);
 	}
 }

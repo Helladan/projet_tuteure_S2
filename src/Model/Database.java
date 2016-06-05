@@ -46,6 +46,17 @@ public class Database {
 		return resultatRequete;
 	}
 
+	/* Ferme la connection à la base de donnée. */
+
+	public void endConnection() {
+		try {
+			if(c != null && !c.isClosed())
+				c.close();
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * Methode qui crée le fichier de sauvegarde au besoin
 	 */
@@ -92,6 +103,8 @@ public class Database {
 	 * @param temps        temps du joueur pour finir la partie
 	 */
 	public void insertionScore(int tailleGrille, int difficulte, String nom, double temps) {
+		creationSauvegarde();
+
 		try {
 			Class.forName("org.sqlite.JDBC");
 			c = DriverManager.getConnection("jdbc:sqlite:scores.db");
@@ -129,6 +142,8 @@ public class Database {
 	 * @param difficulte   difficulté de la partie
 	 */
 	public void recuperationSauvegarde(int tailleGrille, int difficulte) {
+		creationSauvegarde();
+
 		try {
 			String req;
 			Class.forName("org.sqlite.JDBC");
