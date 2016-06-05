@@ -81,6 +81,7 @@ public class Fenetre extends JFrame {
 						grille[i][j].setIcon(new ImageIcon("src/bomb.png"));
 					}
 					else {
+						grille[i][j].setIcon(null);
 						afficheNbre(i, j);
 					}
 				}
