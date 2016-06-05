@@ -212,7 +212,6 @@ public class Grille {
 		for(int y = 0; y < this.hauteur; y++){
 		    for(int x = 0; x < this.largeur; x++){
 			    cpt ++;
-			    //System.out.println(cpt);
 			    grille[y][x].setAsDevoilee();
 		    }
 		}
