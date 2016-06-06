@@ -96,8 +96,8 @@ public class Fenetre extends JFrame {
 		if(jeu.getGrille().isPerdue()) {
 			for(i = 0; i < grid.getHauteur(); i++) {
 				for (j = 0; j < grid.getLargeur(); j++) {
-					if (grid.getGrille()[i][j].isDrapeau()) {
-						grille[i][j].setIcon(null);
+					if (grid.getGrille()[i][j].isDrapeau() && grid.getGrille()[i][j].isMine()) {
+						grille[i][j].setIcon(new ImageIcon("src/flag.png"));
 					}
 				}
 			}
