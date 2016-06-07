@@ -8,7 +8,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -55,6 +54,7 @@ public class Fenetre extends JFrame {
 		setContentPane(panel);
 		setMinimumSize(new Dimension(LARGEUR, HAUTEUR));
 		pack();
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setTitle("Déminheur");
 		setResizable(false);
