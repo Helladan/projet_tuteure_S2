@@ -91,7 +91,7 @@ public class Chrono {
 	 */
 	private void getMeilleurTempsFromDB() {
 		int taille = grille.getHauteur()*grille.getLargeur();
-		database.recuperationSauvegarde(taille, 0);
+		database.recuperationSauvegarde(taille, grille.getDifficulte());
 
 		ResultSet resultatRequete = database.getResultatRequete();
 
@@ -122,6 +122,6 @@ public class Chrono {
 	/* Ajoute le temps actuel à la base de donnée. */
 
 	public void setTempsInDB(String pseudo) {
-		database.insertionScore(grille.getTaille(), 0, pseudo, temps/10.0);
+		database.insertionScore(grille.getTaille(), grille.getDifficulte(), pseudo, temps/10.0);
 	}
 }

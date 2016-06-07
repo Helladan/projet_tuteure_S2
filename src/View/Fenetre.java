@@ -294,10 +294,9 @@ public class Fenetre extends JFrame {
 	 * Affichage d'une nouvelle grille lors du clique sur mItemNouvellePartie
 	 */
 	public void restart() {
-		jeu.getTime().getDatabase().endConnection();
 		this.dispose();
 
-		Jeu j = new Jeu();
+		Jeu j = new Jeu(grid.getHauteur(), grid.getLargeur(), grid.getDifficulte());
 		ControlGroup gp = new ControlGroup(j);
 	}
 
@@ -326,7 +325,7 @@ public class Fenetre extends JFrame {
 		ResultSet scores;
 		boolean haveData = false;
 
-		database.recuperationSauvegarde(jeu.getGrille().getTaille(), 0);
+		database.recuperationSauvegarde(jeu.getGrille().getTaille(), grid.getDifficulte());
 		scores = database.getResultatRequete();
 
 		try {
@@ -337,6 +336,8 @@ public class Fenetre extends JFrame {
 			e.printStackTrace();
 		}
 
+		System.out.println(scores);
+
 		if(scores != null && haveData) {
 			try {
 				int i = 1;
@@ -346,6 +347,8 @@ public class Fenetre extends JFrame {
 					scoreList += i + "." + scores.getString("nom") + " " + scores.getDouble("temps") + "\n";
 					i++;
 				} while(scores.next());
+
+				database.endConnection();
 
 				scorePan.showMessageDialog(this, "Meilleurs scores : " + scoreList, "Scores", JOptionPane.NO_OPTION);
 			}
@@ -422,7 +425,6 @@ public class Fenetre extends JFrame {
 		JOptionPane optionPaneGagne = new JOptionPane();
 		String nom = optionPaneGagne.showInputDialog(this, "Bravo tu as gagné ! Entre ton pseudo : ");
 
-		jeu.getTime().getDatabase().endConnection();
 
 		if(nom != null)
 			jeu.getTime().setTempsInDB(nom);

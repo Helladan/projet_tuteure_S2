@@ -57,6 +57,7 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * Methode qui crée le fichier de sauvegarde au besoin
 	 */
@@ -160,6 +161,7 @@ public class Database {
 					"LIMIT 0, 5";
 
 			resultatRequete = stmt.executeQuery(req);
+
 		}
 		catch(Exception e) {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());

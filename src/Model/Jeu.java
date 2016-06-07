@@ -28,7 +28,7 @@ public class Jeu {
 	 */
 	public Jeu(int hauteur, int larg, int difficulte) {
 		grille = new Grille(hauteur, larg, difficulte);
-		time = new Chrono();
+		time = new Chrono(grille);
 	}
 
 	/**
