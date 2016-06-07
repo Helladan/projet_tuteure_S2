@@ -24,14 +24,12 @@ public class ControlMenu extends Control implements ActionListener {
 	 * Gère le menu en accèdant aux fontions crées dans la fenêtre
 	 *
 	 * @param e
-	 *
 	 */
 
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 
 		if(source.equals(fenetre.getmItemNouvellePartie())) {
-			//jeu.nouvellePartie();
 			fenetre.restart();
 		}
 		else if(source.equals(fenetre.getmItemScores())) {
@@ -39,6 +37,24 @@ public class ControlMenu extends Control implements ActionListener {
 		}
 		else if(source.equals(fenetre.getmItemQuitter())) {
 			fenetre.quitter();
+		}
+		else if(source.equals(fenetre.getMenuItem10x10())) {
+			fenetre.changerTaille(10, 10);
+		}
+		else if(source.equals(fenetre.getMenuItem15x15())) {
+			fenetre.changerTaille(15, 15);
+		}
+		else if(source.equals(fenetre.getMenuItem20x20())) {
+			fenetre.changerTaille(20, 20);
+		}
+		else if(source.equals(fenetre.getMenuItemFacile())) {
+			fenetre.changerDifficulte(1);
+		}
+		else if(source.equals(fenetre.getMenuItemMoyen())) {
+			fenetre.changerDifficulte(2);
+		}
+		else if(source.equals(fenetre.getMenuItemDifficile())) {
+			fenetre.changerDifficulte(3);
 		}
 
 	}

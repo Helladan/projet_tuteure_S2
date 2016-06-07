@@ -1,5 +1,7 @@
 package Model;
 
+import javax.swing.*;
+
 /**
  * Classe du jeu. Représente le modèle, fais le lien entre les classe Chrono,
  * Grille et Case. Chaque instance est une nouvelle partie.
@@ -16,6 +18,7 @@ public class Jeu {
 		time = new Chrono(grille);
 	}
 
+
 	/**
 	 * Constructeur de jeu avec des dimensions.
 	 *
@@ -23,8 +26,8 @@ public class Jeu {
 	 * @param larg      largeur de la grille.
 	 * @param nbreMines nombre de mines présentes dans la grille.
 	 */
-	public Jeu(int hauteur, int larg, int nbreMines) {
-		grille = new Grille(hauteur, larg, nbreMines);
+	public Jeu(int hauteur, int larg, int difficulte) {
+		grille = new Grille(hauteur, larg, difficulte);
 		time = new Chrono();
 	}
 

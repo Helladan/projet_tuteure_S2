@@ -22,9 +22,17 @@ public class Fenetre extends JFrame {
 	 * Déclaration des attributs
 	 */
 	protected Grille grid;
+
 	protected JMenuItem mItemNouvellePartie;
 	protected JMenuItem mItemScores;
 	protected JMenuItem mItemQuitter;
+	protected JMenuItem menuItem10x10;
+	protected JMenuItem menuItem15x15;
+	protected JMenuItem menuItem20x20;
+	protected JMenuItem menuItemFacile;
+	protected JMenuItem menuItemMoyen;
+	protected JMenuItem menuItemDifficile;
+
 	protected JLabel chrono;
 	protected JButton[][] grille;
 	protected JPanel panel;
@@ -62,6 +70,12 @@ public class Fenetre extends JFrame {
 		mItemNouvellePartie = new JMenuItem("Nouvelle partie");
 		mItemScores = new JMenuItem("Scores");
 		mItemQuitter = new JMenuItem("Quitter");
+		menuItem10x10 = new JMenuItem("10x10");
+		menuItem15x15 = new JMenuItem("15x15");
+		menuItem20x20 = new JMenuItem("20x20");
+		menuItemFacile = new JMenuItem("Facile");
+		menuItemMoyen = new JMenuItem("Moyen");
+		menuItemDifficile = new JMenuItem("Difficile");
 		chrono = new JLabel("");
 		panel = new JPanel();
 
@@ -135,12 +149,25 @@ public class Fenetre extends JFrame {
 
 		JMenuBar barMenu = new JMenuBar();
 		JMenu menu = new JMenu("Menu");
+		JMenu taille = new JMenu("Taille");
+		JMenu difficulte = new JMenu("Difficulte");
 
 		menu.add(mItemNouvellePartie);
 		menu.add(mItemScores);
 		menu.add(mItemQuitter);
 
+
+		taille.add(menuItem10x10);
+		taille.add(menuItem15x15);
+		taille.add(menuItem20x20);
+
+		difficulte.add(menuItemFacile);
+		difficulte.add(menuItemMoyen);
+		difficulte.add(menuItemDifficile);
+
 		barMenu.add(menu);
+		barMenu.add(taille);
+		barMenu.add(difficulte);
 
 		setJMenuBar(barMenu);
 	}
@@ -194,6 +221,30 @@ public class Fenetre extends JFrame {
 		return mItemNouvellePartie;
 	}
 
+	public JMenuItem getMenuItemDifficile() {
+		return menuItemDifficile;
+	}
+
+	public JMenuItem getMenuItem10x10() {
+		return menuItem10x10;
+	}
+
+	public JMenuItem getMenuItem15x15() {
+		return menuItem15x15;
+	}
+
+	public JMenuItem getMenuItem20x20() {
+		return menuItem20x20;
+	}
+
+	public JMenuItem getMenuItemFacile() {
+		return menuItemFacile;
+	}
+
+	public JMenuItem getMenuItemMoyen() {
+		return menuItemMoyen;
+	}
+
 	/**
 	 * @return l'attribut grille (tableau de boutons)
 	 */
@@ -211,6 +262,12 @@ public class Fenetre extends JFrame {
 		mItemNouvellePartie.addActionListener(al);
 		mItemScores.addActionListener(al);
 		mItemQuitter.addActionListener(al);
+		menuItem10x10.addActionListener(al);
+		menuItem15x15.addActionListener(al);
+		menuItem20x20.addActionListener(al);
+		menuItemFacile.addActionListener(al);
+		menuItemMoyen.addActionListener(al);
+		menuItemDifficile.addActionListener(al);
 	}
 
 	/**
@@ -242,7 +299,22 @@ public class Fenetre extends JFrame {
 
 		Jeu j = new Jeu();
 		ControlGroup gp = new ControlGroup(j);
-	//	this.setVisible(true);
+	}
+
+	public void changerTaille(int hauteur, int largeur){
+		this.dispose();
+
+		Jeu j = new Jeu(hauteur, largeur, grid.getDifficulte());
+
+		ControlGroup gp = new ControlGroup(j);
+	}
+
+	public void changerDifficulte(int difficulte){
+		this.dispose();
+
+		Jeu j = new Jeu(grid.getHauteur(), grid.getLargeur(), difficulte);
+
+		ControlGroup gp = new ControlGroup(j);
 	}
 
 	/**

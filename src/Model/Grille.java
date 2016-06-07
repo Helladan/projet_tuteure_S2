@@ -6,12 +6,14 @@ package Model;
  * @author Tarek
  */
 public class Grille {
-	private final static int LARGEUR_PAR_DEFAUT = 15;
-	private final static int HAUTEUR_PAR_DEFAUT = 15;
+	private final static int LARGEUR_PAR_DEFAUT = 10;
+	private final static int HAUTEUR_PAR_DEFAUT = 10;
 	private final static int NBRE_DE_MINES_PAR_DEFAUT = 25;
+	private final static int DIFFICULTE = 1;
 	private final int hauteur;
 	private final int largeur;
-	private final int nombreDeMines;
+	private int nombreDeMines;
+	private final int difficulte;
 	private final int casesVides;
 	private Case grille[][];
 	private int casesDevoilees;
@@ -24,7 +26,11 @@ public class Grille {
 	 * défaut.
 	 */
 	public Grille() {
-		this(HAUTEUR_PAR_DEFAUT, LARGEUR_PAR_DEFAUT, NBRE_DE_MINES_PAR_DEFAUT);
+		this(HAUTEUR_PAR_DEFAUT, LARGEUR_PAR_DEFAUT, DIFFICULTE);
+	}
+
+	public Grille(int haut, int larg) {
+		this(haut, larg, DIFFICULTE);
 	}
 
 	/**
@@ -35,13 +41,28 @@ public class Grille {
 	 * @param larg      Largeur de la grille.
 	 * @param nbreMines Nombre de mines à placer dans la grille.
 	 */
-	public Grille(int haut, int larg, int nbreMines) {
+	public Grille(int haut, int larg, int diff) {
 		hauteur = haut;
 		largeur = larg;
-		nombreDeMines = nbreMines;
+		difficulte = diff;
+
+		switch(difficulte) {
+			case 1:
+				nombreDeMines = haut*larg/10;
+				break;
+			case 2:
+				nombreDeMines = haut*larg/6;
+				break;
+			case 3:
+				nombreDeMines = haut*larg/4;
+				break;
+			default:
+				nombreDeMines = haut*larg/10;
+				break;
+		}
 		this.newGrille();
 		this.placeMines();
-		casesVides = haut*larg - nbreMines;
+		casesVides = haut*larg - nombreDeMines;
 		casesDevoilees = 0;
 		nbreDrapeau = 0;
 		grillePerdue = false;
@@ -63,6 +84,10 @@ public class Grille {
 	 */
 	public int getLargeur() {
 		return largeur;
+	}
+
+	public int getDifficulte() {
+		return difficulte;
 	}
 
 	/**
@@ -207,13 +232,13 @@ public class Grille {
 	/**
 	 * Dévoile toute la grille
 	 */
-	public void toutDevoiler(){
+	public void toutDevoiler() {
 		int cpt = 0;
-		for(int y = 0; y < this.hauteur; y++){
-		    for(int x = 0; x < this.largeur; x++){
-			    cpt ++;
-			    grille[y][x].setAsDevoilee();
-		    }
+		for(int y = 0; y < this.hauteur; y++) {
+			for(int x = 0; x < this.largeur; x++) {
+				cpt++;
+				grille[y][x].setAsDevoilee();
+			}
 		}
 	}
 }
