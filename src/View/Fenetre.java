@@ -87,6 +87,12 @@ public class Fenetre extends JFrame {
 	 */
 	public void updateFen() {
 		int i, j;
+
+
+
+		System.out.println(grid.getTaille() + " - " + grid.getNombreDeMines() + " = " + (grid.getTaille()-grid.getNombreDeMines()));
+		System.out.println("Drapeaux : " + grid.getNbreDrapeau() + "\t Cases dévoilées : " + grid.getCasesDevoilees());
+
 		for(i = 0; i < grid.getHauteur(); i++) {
 			for(j = 0; j < grid.getLargeur(); j++) {
 				if(grid.getGrille()[i][j].isDevoilee()) {
@@ -119,6 +125,8 @@ public class Fenetre extends JFrame {
 		}
 		else if(jeu.getGrille().isGagnee()) {
 			gagne();
+
+
 		}
 	}
 

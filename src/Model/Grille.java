@@ -112,6 +112,10 @@ public class Grille {
 		return nbreDrapeau;
 	}
 
+	public int getCasesDevoilees() {
+		return casesDevoilees;
+	}
+
 	public void incrementeNbreDrapeau() {
 		this.nbreDrapeau++;
 	}
