@@ -41,7 +41,9 @@ public class ControlButton extends Control implements MouseListener {
 
 			for (int i = 0; i < hauteur; i++) {
 				for (int j = 0; j < largeur; j++) {
-					if (fenetre.getGrille()[i][j].equals(source) && !jeu.getGrille().getGrille()[i][j].isDrapeau()) {
+					if (fenetre.getGrille()[i][j].equals(source) &&
+							!jeu.getGrille().getGrille()[i][j].isDrapeau() &&
+							!jeu.getGrille().getGrille()[i][j].isDevoilee()) {
 						jeu.devoileCase(i, j);
 						fenetre.updateFen();
 					}
