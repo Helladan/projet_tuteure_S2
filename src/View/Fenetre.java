@@ -32,9 +32,13 @@ public class Fenetre extends JFrame {
 	protected JMenuItem menuItemMoyen;
 	protected JMenuItem menuItemDifficile;
 
+	protected JLabel mines;
+	protected JLabel drapeaux;
 	protected JLabel chrono;
 	protected JButton[][] grille;
+	protected JPanel topPanel;
 	protected JPanel panel;
+
 	protected Jeu jeu;
 
 	public static final int LARGEUR = 0;
@@ -49,6 +53,7 @@ public class Fenetre extends JFrame {
 
 		initAttribut();
 		creerMenu();
+		creerTopBar();
 		creerChrono();
 		creerGrille();
 		setContentPane(panel);
@@ -76,10 +81,16 @@ public class Fenetre extends JFrame {
 		menuItemFacile = new JMenuItem("Facile");
 		menuItemMoyen = new JMenuItem("Moyen");
 		menuItemDifficile = new JMenuItem("Difficile");
+
+		topPanel = new JPanel();
+		topPanel.setLayout(new GridLayout(0, 3));
+		mines = new JLabel();
+		drapeaux = new JLabel();
 		chrono = new JLabel("");
 		panel = new JPanel();
 
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		panel.add(topPanel);
 	}
 
 	/**
@@ -87,8 +98,6 @@ public class Fenetre extends JFrame {
 	 */
 	public void updateFen() {
 		int i, j;
-
-
 
 		System.out.println(grid.getTaille() + " - " + grid.getNombreDeMines() + " = " + (grid.getTaille()-grid.getNombreDeMines()));
 		System.out.println("Drapeaux : " + grid.getNbreDrapeau() + "\t Cases dévoilées : " + grid.getCasesDevoilees());
@@ -125,19 +134,39 @@ public class Fenetre extends JFrame {
 		}
 		else if(jeu.getGrille().isGagnee()) {
 			gagne();
-
-
 		}
+
+		drapeaux.setText(Integer.toString(grid.getNbreDrapeau()));
+	}
+
+	private void creerTopBar(){
+		JLabel imageMine = new JLabel(new ImageIcon("src/bomb.png"));
+		mines.setText(Integer.toString(grid.getNombreDeMines()));
+
+		JLabel imageDrapeau = new JLabel(new ImageIcon("src/flag.png"));
+		drapeaux.setText(Integer.toString(grid.getNbreDrapeau()));
+
+		JPanel infoMines = new JPanel();
+		infoMines.add(imageMine);
+		infoMines.add(mines);
+
+		topPanel.add(infoMines);
+
+		JPanel infoDrapeaux = new JPanel();
+		infoDrapeaux.add(imageDrapeau);
+		infoDrapeaux.add(drapeaux);
+
+		topPanel.add(infoDrapeaux);
 	}
 
 	/**
 	 * Ajoute le chrono à la fenetre.
 	 */
 	private void creerChrono() {
-		JLabel labelTemps = new JLabel("Temps : ");
+		JLabel labelTemps = new JLabel(new ImageIcon("src/chrono.png"));
 		JPanel panelChrono = new JPanel();
 
-		panelChrono.setLayout(new BoxLayout(panelChrono, BoxLayout.X_AXIS));
+		//panelChrono.setLayout(new BoxLayout(panelChrono, BoxLayout.X_AXIS));
 
 		Timer t = new Timer(10, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -147,7 +176,7 @@ public class Fenetre extends JFrame {
 		t.start();
 		panelChrono.add(labelTemps);
 		panelChrono.add(chrono);
-		panel.add(panelChrono);
+		topPanel.add(panelChrono);
 	}
 
 	/**
@@ -343,8 +372,6 @@ public class Fenetre extends JFrame {
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
-
-		System.out.println(scores);
 
 		if(scores != null && haveData) {
 			try {

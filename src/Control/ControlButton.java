@@ -1,10 +1,8 @@
 package Control;
 
-import Model.Grille;
 import Model.Jeu;
 import View.Fenetre;
 
-import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -63,6 +61,7 @@ public class ControlButton extends Control implements MouseListener {
 						}else{
 							jeu.retirerDrapeau(i,j);
 						}
+
 						fenetre.updateFen();
 					}
 
