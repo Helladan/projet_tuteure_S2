@@ -30,6 +30,8 @@ public class Chrono {
 	public Chrono(Grille grille) {
 		this.database = new Database();
 		this.grille = grille;
+
+		getMeilleurTempsFromDB();
 	}
 
 	/**

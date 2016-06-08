@@ -4,6 +4,7 @@ import Control.ControlGroup;
 import Model.*;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -83,7 +84,7 @@ public class Fenetre extends JFrame {
 		menuItemDifficile = new JMenuItem("Difficile");
 
 		topPanel = new JPanel();
-		topPanel.setLayout(new GridLayout(0, 3));
+		topPanel.setLayout(new GridLayout(0, 4));
 		mines = new JLabel();
 		drapeaux = new JLabel();
 		chrono = new JLabel("");
@@ -165,6 +166,9 @@ public class Fenetre extends JFrame {
 	private void creerChrono() {
 		JLabel labelTemps = new JLabel(new ImageIcon("src/chrono.png"));
 		JPanel panelChrono = new JPanel();
+		JPanel recordPan = new JPanel();
+		JLabel record = new JLabel(new ImageIcon("src/star.png"));
+		JLabel recordLabel = new JLabel(Float.toString(jeu.getTime().getMeilleurTemps()));
 
 		//panelChrono.setLayout(new BoxLayout(panelChrono, BoxLayout.X_AXIS));
 
@@ -176,7 +180,10 @@ public class Fenetre extends JFrame {
 		t.start();
 		panelChrono.add(labelTemps);
 		panelChrono.add(chrono);
+		recordPan.add(record);
+		recordPan.add(recordLabel);
 		topPanel.add(panelChrono);
+		topPanel.add(recordPan);
 	}
 
 	/**
