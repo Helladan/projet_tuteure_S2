@@ -30,8 +30,6 @@ public class Chrono {
 	public Chrono(Grille grille) {
 		this.database = new Database();
 		this.grille = grille;
-
-		getMeilleurTempsFromDB();
 	}
 
 	/**
@@ -91,7 +89,7 @@ public class Chrono {
 	 * Prendre en compte la difficultée lorsqu'elle
 	 * sera gérée dans le model et la base de donnée.
 	 */
-	private void getMeilleurTempsFromDB() {
+	public void getMeilleurTempsFromDB() {
 		int taille = grille.getHauteur()*grille.getLargeur();
 		database.recuperationSauvegarde(taille, grille.getDifficulte());
 
@@ -99,14 +97,16 @@ public class Chrono {
 
 		if(resultatRequete != null) {
 			try {
-				resultatRequete.next();
-				meilleurTemps = resultatRequete.getFloat("temps");
+				if(resultatRequete.next())
+					meilleurTemps = resultatRequete.getFloat("temps");
 			}
 			catch (SQLException e) {
 				System.out.println("Erreur sur le parcours de resultatRequete dans Chrono.getMeilleurTempsFromDB()");
 				e.printStackTrace();
 			}
 		}
+
+		database.endConnection();
 	}
 
 	/**

@@ -4,7 +4,6 @@ import Control.ControlGroup;
 import Model.*;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,6 +35,7 @@ public class Fenetre extends JFrame {
 	protected JLabel mines;
 	protected JLabel drapeaux;
 	protected JLabel chrono;
+	protected JLabel recordLabel;
 	protected JButton[][] grille;
 	protected JPanel topPanel;
 	protected JPanel panel;
@@ -88,6 +88,7 @@ public class Fenetre extends JFrame {
 		mines = new JLabel();
 		drapeaux = new JLabel();
 		chrono = new JLabel("");
+		recordLabel = new JLabel();
 		panel = new JPanel();
 
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -167,9 +168,9 @@ public class Fenetre extends JFrame {
 		JLabel labelTemps = new JLabel(new ImageIcon("src/chrono.png"));
 		JPanel panelChrono = new JPanel();
 		JPanel recordPan = new JPanel();
-		JLabel record = new JLabel(new ImageIcon("src/star.png"));
-		JLabel recordLabel = new JLabel(Float.toString(jeu.getTime().getMeilleurTemps()));
+		JLabel record = new JLabel(new ImageIcon("src/cup.png"));
 
+		setRecord();
 		//panelChrono.setLayout(new BoxLayout(panelChrono, BoxLayout.X_AXIS));
 
 		Timer t = new Timer(10, new ActionListener() {
@@ -184,6 +185,11 @@ public class Fenetre extends JFrame {
 		recordPan.add(recordLabel);
 		topPanel.add(panelChrono);
 		topPanel.add(recordPan);
+	}
+
+	private void setRecord() {
+		jeu.getTime().getMeilleurTempsFromDB();
+		recordLabel.setText(Float.toString(jeu.getTime().getMeilleurTemps()));
 	}
 
 	/**
@@ -468,8 +474,10 @@ public class Fenetre extends JFrame {
 		String nom = optionPaneGagne.showInputDialog(this, "Bravo tu as gagné ! Entre ton pseudo : ");
 
 
-		if(nom != null)
+		if(nom != null) {
 			jeu.getTime().setTempsInDB(nom);
+			setRecord();
+		}
 	}
 
 	/**
