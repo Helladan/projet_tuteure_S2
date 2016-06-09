@@ -188,8 +188,15 @@ public class Fenetre extends JFrame {
 	}
 
 	private void setRecord() {
+		float meilleurTemps;
+
 		jeu.getTime().getMeilleurTempsFromDB();
-		recordLabel.setText(Float.toString(jeu.getTime().getMeilleurTemps()));
+		meilleurTemps = jeu.getTime().getMeilleurTemps();
+
+		if(meilleurTemps < 0)
+			recordLabel.setText("?");
+		else
+			recordLabel.setText(Float.toString(meilleurTemps));
 	}
 
 	/**
