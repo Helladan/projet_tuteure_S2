@@ -116,7 +116,8 @@ public class Jeu {
 				}
 
 				if(!grille.getGrille()[h][l].isMine() &&
-						!grille.getGrille()[h][l].isDevoilee()) {
+						!grille.getGrille()[h][l].isDevoilee() && !grille
+						.getGrille()[h][l].isDrapeau()) {
 					devoileCase(h, l);
 				}
 			}
